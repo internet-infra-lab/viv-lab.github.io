@@ -1,7 +1,7 @@
 # 部署实验室官网（viv-lab）到 GitHub Pages（Actions 自动构建，无需手动上传构建产物）
 #
 # 触发方式：
-#   - push 到默认分支（main / master 任一）；
+#   - push 到 main 分支自动部署（若仓库默认分支为 master，请将下方 main 改为 master）；
 #   - 手动触发（仓库 Actions 页面 → Run workflow）。
 #
 # 命名约定（viv-lab）：
@@ -24,7 +24,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - $default-branch
+      - main
   workflow_dispatch:
 
 # 赋予 GITHUB_TOKEN 部署到 GitHub Pages 的权限
