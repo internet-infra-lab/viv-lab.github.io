@@ -1,0 +1,275 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+}
+
+/* 卡片差异化：偶数位使用交替底色 + 悬停顶线 */
+.card {
+  position: relative;
+  height: 100%;
+  border-top: 3px solid transparent;
+  overflow: hidden;
+}
+
+.grid > div:nth-child(even) {
+  background: var(--color-bg-alt);
+}
+
+.card:hover {
+  border-top-color: var(--color-primary);
+}
+
+/* 编号水印 */
+.index {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.09;
+  pointer-events: none;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: var(--space-24);
+  height: 100%;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding-right: 36px;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(29, 78, 137, 0.08);
+  transition: background 0.2s ease-out, color 0.2s ease-out;
+}
+
+.card:hover .icon {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.title {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  transition: color 0.15s ease-out;
+}
+
+.card:hover .title {
+  color: var(--color-primary);
+}
+
+.en {
+  font-size: var(--font-caption);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.summary {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: gap 0.15s ease-out;
+}
+
+.card:hover .more {
+  gap: 10px;
+}
+
+/* 页面标题区内的交叉链接（实验室介绍 ↔ 研究方向） */
+.descLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease-out;
+}
+
+.descLink:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ---- 02 科研项目：项目卡片网格（数据就绪后启用） ---- */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-24);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-top: 3px solid transparent;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.projectCard:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+  border-top-color: var(--color-primary);
+}
+
+.projectHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.projectType,
+.projectStatus {
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.projectType {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+
+.projectStatus {
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+}
+
+.projectTitle {
+  font-size: var(--font-h3);
+  font-weight: 600;
+}
+
+.projectSummary {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.projectMeta {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  font-size: var(--font-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- 02 科研项目：资料整理中（正式面板，非空态提示） ---- */
+.projectsPending {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-24);
+  padding: var(--space-32);
+  background: linear-gradient(165deg, var(--color-primary-tint) 0%, #ffffff 78%);
+  border: 1px solid rgba(29, 78, 137, 0.14);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.projectsPendingIcon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(29, 78, 137, 0.22);
+}
+
+.projectsPendingBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+}
+
+.projectsPendingTitle {
+  font-size: var(--font-h3);
+  font-weight: 700;
+}
+
+.projectsPendingDesc {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  max-width: 760px;
+}
+
+.projectsPendingCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-4);
+  padding: 9px 20px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: background 0.15s ease-out, color 0.15s ease-out;
+}
+
+.projectsPendingCta:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+  .projectsPending {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+}

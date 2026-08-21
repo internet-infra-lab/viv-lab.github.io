@@ -1,0 +1,15 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# 本地 npm 缓存（位于工作区根目录，勿提交）
+.npm-cache/
+
+# 系统 / 编辑器
+.DS_Store
+*.local
+Thumbs.db
+
+# 日志与临时文件
+npm-debug.log*
+*.log

@@ -1,0 +1,292 @@
+[
+  {
+    "id": "pdet-lsh-tkde-2026",
+    "title": "PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search with Quality Guarantees",
+    "authors": [
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Quanqing Xu", "corresponding": false },
+      { "name": "Chuanhui Yang", "corresponding": false },
+      { "name": "Themis Palpanas", "corresponding": false }
+    ],
+    "venue": "IEEE TKDE",
+    "year": 2026,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1109/tkde.2026.3677369",
+    "abstract": "Locality-sensitive hashing (LSH) is a well-known solution for approximate nearest neighbor (ANN) search with theoretical guarantees. Traditional LSH-based methods mainly focus on improving the efficiency and accuracy of query phase by designing different query strategies, but pay little attention to improving the efficiency of the indexing phase. They typically fine tune existing data-oriented partitioning trees to index data points and support their query strategies. However, their strategy to directly partition the multidimensional space is time-consuming, and performance degrades as the space dimensionality increases. In this paper, we design an encoding-based tree called Dynamic Encoding Tree (DE-Tree) to improve the indexing efficiency and support efficient range queries. Based on DE-Tree, we propose a novel LSH scheme called DET-LSH. DET-LSH adopts a novel query strategy, which performs range queries in multiple independent index DE-Trees to reduce the probability of missing exact NN points. Extensive experiments demonstrate that while achieving best query accuracy, DET-LSH achieves up to 6x speedup in indexing time and 2x speedup in query time over the state-of-the-art LSH-based methods. In addition, to further improve the performance of DET-LSH, we propose PDET-LSH, an in-memory method adopting the parallelization opportunities provided by multicore CPUs. PDET-LSH exhibits considerable advantages in indexing and query efficiency, especially on large scale datasets. Extensive experiments show that, while achieving the same query accuracy as DET-LSH, PDET-LSH offers up to 40x speedup in indexing time and 62x speedup in query answering time over the state-of-the-art LSH-based methods. Our theoretical analysis demonstrates that DET-LSH and PDET-LSH offer probabilistic guarantees on query answering accuracy.",
+    "keywords": ["局部敏感哈希", "近似最近邻搜索", "内存索引", "质量保证"],
+    "research_direction": ["dir9"],
+    "featured": true
+  },
+  {
+    "id": "structured-policy-ist-2026",
+    "title": "Structured Policy Modeling and Context-Aware Generation for Multi-Jurisdictional Compliance in Global Software Systems",
+    "authors": [
+      { "name": "Zhixian Zhuang", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Aiyao Zhang", "corresponding": false },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "Information and Software Technology",
+    "year": 2026,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1016/j.infsof.2026.108041",
+    "keywords": ["跨境数据合规", "策略建模", "软件系统", "合规生成"],
+    "research_direction": ["dir8"],
+    "featured": true
+  },
+  {
+    "id": "subspace-collision-sigmod-2025",
+    "title": "Subspace Collision: An Efficient and Accurate Framework for High-dimensional Approximate Nearest Neighbor Search",
+    "authors": [
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Zhenyu Liao", "corresponding": false },
+      { "name": "Themis Palpanas", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "SIGMOD 2025",
+    "year": 2025,
+    "type": "会议",
+    "doi": "https://doi.org/10.1145/3709729",
+    "abstract": "Approximate Nearest Neighbor (ANN) search in high-dimensional Euclidean spaces is a fundamental problem with a wide range of applications. However, there is currently no ANN method that performs well in both indexing and query answering performance, while providing rigorous theoretical guarantees for the quality of the answers. In this paper, we first design SC-score, a metric that we show follows the Pareto principle and can act as a proxy for the Euclidean distance between data points. Inspired by this, we propose a novel ANN search framework called Subspace Collision (SC), which can provide theoretical guarantees on the quality of its results. We further propose SuCo, which achieves efficient and accurate ANN search by designing a clustering-based lightweight index and query strategies for our proposed subspace collision framework. Extensive experiments on real-world datasets demonstrate that both the indexing and query answering performance of SuCo outperform state-of-the-art ANN methods that can provide theoretical guarantees, performing 1-2 orders of magnitude faster query answering with only up to one-tenth of the index memory footprint. Moreover, SuCo achieves top performance (best for hard datasets) even when compared to methods that do not provide theoretical guarantees.",
+    "keywords": ["近似最近邻搜索", "高维数据", "子空间碰撞", "理论保证"],
+    "research_direction": ["dir9"],
+    "featured": true
+  },
+  {
+    "id": "dominate-data-wwwj-2025",
+    "title": "Dominate Data by Yourself: A Decentralized Scheme for Data Interoperation when Data is Decoupled from Applications",
+    "authors": [
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "World Wide Web Journal",
+    "year": 2025,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1007/s11280-025-01337-z",
+    "keywords": ["数据互操作", "去中心化", "数据所有权", "数据与应用解耦"],
+    "research_direction": ["dir8"],
+    "featured": true
+  },
+  {
+    "id": "defiad-trustcom-2025",
+    "title": "DeFiAD: A Unified Method for Early-Stage Domain Abuse Detection through Automated Deep Feature Interaction",
+    "authors": [
+      { "name": "Zhaojun Dai", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "TrustCom 2025",
+    "year": 2025,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/trustcom66490.2025.00257",
+    "abstract": "As a key infrastructure of the Internet, the Domain Name System (DNS) is frequently abused because of its open-ness, which makes early detection of domain abuse a critical task in cybersecurity. However, most existing methods rely on external data sources such as webpage content or long-term DNS resolution logs, which are unavailable at the registration stage, delaying detection and limiting adaptability across attack types. To overcome these limitations, we propose DeFiAD, a unified framework for early-stage domain abuse detection that relies solely on multi-source static information available at registration, enabling detection at the beginning of the domain lifecycle. We first introduce UDIRP, a unified domain information representation paradigm, which maps multi-source heterogeneous DNS native data into three subspaces for model understanding, forming a unified multi-channel representation. Building on this representation, we design DCINet, a Deep & Cross Network–based feature interaction model that effectively learns and integrates multi-source heterogeneous features, improving robustness and adaptability across diverse domain abuse types. Experiments on phishing, DGA, and mixed-abuse datasets show that DeFiAD consistently achieves the best overall performance, improving detection accuracy by 4%–10% over existing methods while maintaining high inference efficiency, highlighting its practicality for timely deployment.",
+    "keywords": ["域名滥用检测", "网络安全", "深度特征交互", "DNS"],
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "polaris-trustcom-2025",
+    "title": "POLARIS: Cross-Domain Access Control via Verifiable Identity and Policy-Based Authorization",
+    "authors": [
+      { "name": "Aiyao Zhang", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Zhixian Zhuang", "corresponding": false },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "TrustCom 2025",
+    "year": 2025,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/Trustcom66490.2025.00173",
+    "abstract": "Access control is a security mechanism designed to ensure that only authorized users can access specific resources. Cross-domain access control involves access to resources across different organizations, institutions, or applications. Traditional access control, however, which handles authentication and authorization separately in centralized environments, faces challenges in identity dispersion, privacy leakage, and diversified permission requirements, failing to adapt to cross-domain scenarios. Thus, there is an urgent need for a new access control mechanism that empowers autonomous control over user identity and resources, addressing the demands for privacy-preserving authentication and flexible authorization in cross-domain scenarios.To address cross-domain access control challenges, we propose POLARIS, a unified and extensible architecture that enables policy-based, verifiable and privacy-preserving access control across different domains. POLARIS features a structured commitment mechanism for reliable, fine-grained, policy-based identity disclosure. It further introduces VPPL, a lightweight policy language that supports issuer-bound evaluation of selectively revealed attributes. A dedicated session-level security mechanism ensures binding between authentication and access, enhancing confidentiality and resilience to replay attacks.We implement a working prototype and conduct comprehensive experiments, demonstrating that POLARIS effectively provides scalable, privacy-preserving, and interoperable access control across heterogeneous domains. Our results highlight the practical viability of POLARIS for enabling secure and privacy-preserving access control in decentralized, cross-domain environments.",
+    "keywords": ["Cross-Domain Access Control", "Verifiable Identity", "Policy-Based Authorization", "Privacy-Preserving Authentication", "Decentralized Identity"],
+    "research_direction": ["dir7", "dir8"],
+    "featured": true
+  },
+  {
+    "id": "det-lsh-vldb-2024",
+    "title": "DET-LSH: A Locality-Sensitive Hashing Scheme with Dynamic Encoding Tree for Approximate Nearest Neighbor Search",
+    "authors": [
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Themis Palpanas", "corresponding": false }
+    ],
+    "venue": "VLDB 2024",
+    "year": 2024,
+    "type": "会议",
+    "doi": "https://doi.org/10.14778/3665844.3665854",
+    "abstract": "Locality-sensitive hashing (LSH) is a well-known solution for approximate nearest neighbor (ANN) search in high-dimensional spaces due to its robust theoretical guarantee on query accuracy. Traditional LSH-based methods mainly focus on improving the efficiency and accuracy of the query phase by designing different query strategies, but pay little attention to improving the efficiency of the indexing phase. They typically fine-tune existing data-oriented partitioning trees to index data points and support their query strategies. However, their strategy to directly partition the multi-dimensional space is time-consuming, and performance degrades as the space dimensionality increases. In this paper, we design an encoding-based tree called Dynamic Encoding Tree (DE-Tree) to improve the indexing efficiency and support efficient range queries based on Euclidean distance. Based on DE-Tree, we propose a novel LSH scheme called DET-LSH. DET-LSH adopts a novel query strategy, which performs range queries in multiple independent index DE-Trees to reduce the probability of missing exact NN points, thereby improving the query accuracy. Our theoretical studies show that DET-LSH enjoys probabilistic guarantees on query accuracy. Extensive experiments on real-world datasets demonstrate the superiority of DET-LSH over the state-of-the-art LSH-based methods on both efficiency and accuracy. While achieving better query accuracy than competitors, DET-LSH achieves up to 6x speedup in indexing time and 2x speedup in query time over the state-of-the-art LSH-based methods.",
+    "keywords": ["局部敏感哈希", "动态编码树", "近似最近邻搜索"],
+    "research_direction": ["dir9"]
+  },
+  {
+    "id": "dns-backbone-comnet-2024",
+    "title": "Securing the Internet's Backbone: A Blockchain-Based and Incentive-Driven Architecture for DNS Cache Poisoning Defense",
+    "authors": [
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "Computer Networks",
+    "year": 2024,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1016/j.comnet.2024.110777",
+    "abstract": "Domain Name System (DNS) is the backbone of the Internet infrastructure, converting human-friendly domain names into machine-processable IP addresses. However, DNS remains vulnerable to various security threats, such as cache poisoning attacks , where malicious attackers inject false information into DNS resolvers' caches. Although efforts have been made to enhance DNS against such vulnerabilities, existing countermeasures often fall short in one or more areas: they may offer limited resistance to the collusion attack, introduce significant overhead, or require complex implementation that hinders widespread adoption. To address these challenges, this paper introduces TI-DNS+, a trusted and incentivized blockchain-based DNS resolution architecture for cache poisoning defense. TI-DNS+ introduces a Verification Cache exploiting blockchain ledger's immutable nature to detect and correct forged DNS responses . The architecture also incorporates a multi-resolver Query Vote mechanism, enhancing the ledger's credibility by validating each record modification through a stake-weighted algorithm. This algorithm selects resolvers as validators based on their stake proportion. To promote well-behaved participation, TI-DNS+ also implements a novel stake-based incentive mechanism that optimizes the generation and distribution of stake rewards. This ensures that incentives align with participants' contributions, achieving incentive compatibility, fairness, and efficiency. Moreover, TI-DNS+ possesses high practicability as it requires only resolver-side modifications to current DNS. Finally, through comprehensive prototyping and experimental evaluations, the results demonstrate that our solution effectively mitigates DNS cache poisoning. Compared to competitors, our solution improves attack resistance by 1-3 orders of magnitude, while also reducing resolution latency by 5% to 68%.",
+    "keywords": ["DNS 安全", "缓存投毒防御", "区块链", "激励机制"],
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "streaming-data-iotj-2024",
+    "title": "Streaming Data Collection with a Private Sketch-Based Protocol",
+    "authors": [
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Themis Palpanas", "corresponding": false },
+      { "name": "Jingan Xue", "corresponding": false }
+    ],
+    "venue": "IEEE Internet of Things Journal",
+    "year": 2024,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1109/jiot.2024.3397908",
+    "abstract": "Data stream collection is critical to analyze service conditions and detect anomalies in time, especially in Internet of Things. However, it may undermine the individual privacy. Local differential privacy (LDP) has recently become a popular privacy-preserving technique protecting users' privacy. However, most of them are still limited to the assumption of one-item collection, resulting in poor utility when extended to the multi-item collection from a very large domain. This article proposes a private streaming data collection framework, private sketch-based framework (PSF), which takes advantage of sketches. Combining the proposed background information and a decode-first collection-side workflow, the framework improves the utility by reducing the errors introduced by the sketching algorithm and the privacy budget utilization when collecting multiple items. We analytically prove the superior accuracy and privacy characteristics of PSF. In order to support specific computing tasks, we build two private protocols based on PSF, PrivSketch and PrivSketch+, aiming at frequency estimation and mean estimation, respectively. We demonstrate the utility of PrivSketch and PrivSketch+ theoretically, and also evaluate them experimentally. Our evaluation, with several diverse synthetic and real data sets, demonstrates that PrivSketch is 1–3 orders of magnitude better than the competitors in terms of utility in both frequency estimation and frequent item estimation, while being up to ~100x faster. PrivSketch+ performs ~4 orders of magnitude better than advanced solutions, such as piecewise mechanism (PM) and hybrid mechanism (HM), under a limited privacy budget.",
+    "keywords": ["隐私保护", "流数据采集", "本地差分隐私", "草图协议"],
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "cbcms-bigdata-2024",
+    "title": "CBCMS: A Compliance Management System for Cross-Border Data Transfer",
+    "authors": [
+      { "name": "Zhixian Zhuang", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Aiyao Zhang", "corresponding": false }
+    ],
+    "venue": "IEEE BigData 2024",
+    "year": 2024,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/BigData62323.2024.10826075",
+    "abstract": "This paper proposes CBCMS, a compliance management system for cross-border data transfer. The system integrates regulatory requirements, compliance assessment mechanisms, and automated management processes to support secure and compliant international data flows.",
+    "keywords": ["Cross-Border Data Transfer", "Data Compliance", "Compliance Management", "Risk Assessment", "Data Governance"],
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "disauth-comnet-2024",
+    "title": "DiSAuth: A DNS-based secure authorization framework for protecting data decoupled from applications",
+    "authors": [
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Ziyu Fei", "corresponding": false },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true }
+    ],
+    "venue": "Computer Networks",
+    "year": 2024,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1016/j.comnet.2024.110774",
+    "abstract": "This paper proposes DiSAuth, a DNS-based secure authorization framework for protecting data decoupled from applications. By leveraging DNS-compatible hierarchical structures and blockchain-based mechanisms, DiSAuth enables verifiable and privacy-preserving authorization management for distributed data usage scenarios.",
+    "keywords": ["Authorization", "Data Security and Privacy", "DNS", "Blockchain", "Data Ownership"],
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "ti-dns-trustcom-2023",
+    "title": "TI-DNS: A Trusted and Incentive DNS Resolution Architecture Based on Blockchain",
+    "authors": [
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Xiaodong Li", "corresponding": true }
+    ],
+    "venue": "TrustCom 2023",
+    "year": 2023,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/trustcom60117.2023.00055",
+    "abstract": "Domain Name System (DNS) is a critical component of the Internet infrastructure, responsible for translating domain names into IP addresses. However, DNS is vulnerable to some malicious attacks, including DNS cache poisoning, which redirects users to malicious websites displaying offensive or illegal content. Existing countermeasures often suffer from at least one of the following weakness: weak attack resistance, high overhead, or complex implementation. To address these challenges, this paper presents TI-DNS, a blockchain-based DNS resolution architecture designed to detect and correct the forged DNS records caused by the cache poisoning attacks in the DNS resolution process. TI-DNS leverages a multi-resolver Query Vote mechanism to ensure the credibility of verified records on the blockchain ledger and a stake-based incentive mechanism to promote well-behaved participation. Importantly, TI-DNS is easy to be adopted as it only requires modifications to the resolver side of current DNS infrastructure. Finally, we develop a prototype and evaluate it against alternative solutions. The result demonstrates that TI-DNS effectively and efficiently solves DNS cache poisoning.",
+    "keywords": ["DNS", "可信解析", "区块链", "缓存投毒防御"],
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "privsketch-dexa-2023",
+    "title": "PrivSketch: A Private Sketch-Based Frequency Estimation Protocol for Data Streams",
+    "authors": [
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Themis Palpanas", "corresponding": false },
+      { "name": "Jingan Xue", "corresponding": false }
+    ],
+    "venue": "DEXA 2023",
+    "year": 2023,
+    "type": "会议",
+    "doi": "https://doi.org/10.1007/978-3-031-39847-6_10",
+    "keywords": ["隐私保护", "草图协议", "频率估计", "数据流"],
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "dia-compsac-2023",
+    "title": "Data Interoperating Architecture (DIA): Decoupling Data and Applications to Give Back Your Data Ownership",
+    "authors": [
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Youyi Zhang", "corresponding": false },
+      { "name": "Xiaodong Li", "corresponding": true }
+    ],
+    "venue": "COMPSAC 2023",
+    "year": 2023,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/COMPSAC57700.2023.00065",
+    "abstract": "This paper proposes Data Interoperating Architecture (DIA), a novel architecture that decouples data from applications to return data ownership to users. DIA introduces a data interoperability model and supporting infrastructure to enable independent data management, sharing, and utilization across heterogeneous applications.",
+    "keywords": ["Data Interoperability", "Data Ownership", "Data-Application Decoupling", "Data Infrastructure", "Web 3.0"],
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "flexauth-trustcom-2023",
+    "title": "FlexAuth: A Decentralized Authorization System with Flexible Delegation",
+    "authors": [
+      { "name": "Ziyu Fei", "corresponding": false },
+      { "name": "Ying Li", "corresponding": false },
+      { "name": "Jiuqi Wei", "corresponding": false },
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Xiaodong Li", "corresponding": true }
+    ],
+    "venue": "TrustCom 2023",
+    "year": 2023,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/TrustCom60117.2023.00243",
+    "abstract": "This paper presents FlexAuth, a decentralized authorization system supporting flexible delegation. The framework improves authorization flexibility by enabling delegated access control in distributed environments while maintaining security and verifiability.",
+    "keywords": ["Authorization", "Decentralized System", "Delegation", "Access Control", "Data Security"],
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "illegal-webpage-bigdata-2022",
+    "title": "Fast Illegal Webpage Detection Algorithm Based on Massive Domain Name Resolution Records",
+    "authors": [
+      { "name": "Yue Su", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Xiaodong Li", "corresponding": true }
+    ],
+    "venue": "IEEE BigData 2022",
+    "year": 2022,
+    "type": "会议",
+    "doi": "https://doi.org/10.1109/BigData55660.2022.10020782",
+    "abstract": "This paper proposes a fast illegal webpage detection approach based on massive domain name resolution records. The method leverages large-scale DNS data and feature analysis to improve detection efficiency and accuracy for identifying illegal online content.",
+    "keywords": ["Illegal Webpage Detection", "Domain Name Resolution Records", "Passive DNS", "Web Security", "Machine Learning"],
+    "research_direction": ["dir7"]
+  }
+]

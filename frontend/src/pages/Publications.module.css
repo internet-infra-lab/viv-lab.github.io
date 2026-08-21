@@ -1,0 +1,121 @@
+/* ---- 筛选栏 ---- */
+.filterBar {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--space-16) var(--space-24);
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  flex-wrap: wrap;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.filterLabel {
+  font-size: var(--font-label);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.typeTabs {
+  display: flex;
+  gap: 4px;
+}
+
+.typeTab {
+  border: none;
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: background 0.15s ease-out, color 0.15s ease-out;
+}
+
+.typeTab:hover {
+  color: var(--color-primary);
+}
+
+.typeTabActive {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 500;
+}
+
+.selects {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.selectWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.selectBox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.selectBox select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-page);
+  padding: 8px 32px 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+
+.resultCount {
+  margin-left: auto;
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.resultQuery {
+  margin-left: 4px;
+  color: var(--color-primary);
+}
+
+/* ---- 列表 ---- */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .filterBar {
+    padding: var(--space-16);
+    gap: var(--space-16);
+  }
+  .selects {
+    width: 100%;
+    gap: var(--space-12);
+  }
+  .resultCount {
+    margin-left: 0;
+  }
+}

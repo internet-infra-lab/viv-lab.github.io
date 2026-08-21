@@ -1,0 +1,772 @@
+/* ============================================================
+   团队成员页样式（科研团队展示，非人员管理系统）
+   视觉语言：蓝白学术、导师区浅蓝衬底、卡片轻浮起、hover 动效、
+   图片区域突出；学生卡为 4:3 人像卡，毕业生弱化折叠。
+   ============================================================ */
+
+/* 入场动效（页面加载时卡片轻微上浮出现） */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- 导师团队（浅蓝衬底，整区视觉权重最高） ---- */
+.facultyBand {
+  position: relative;
+  margin: 0 0 var(--space-64);
+  padding: var(--space-32) var(--space-32) var(--space-40, 40px);
+  background:
+    radial-gradient(480px 220px at 92% -30%, rgba(29, 78, 137, 0.1), transparent 60%),
+    linear-gradient(180deg, #f4f8fd 0%, #eaf1fa 100%);
+  border: 1px solid rgba(29, 78, 137, 0.1);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* 衬底顶部细高光 + 顶部主色线 */
+.facultyBand::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), rgba(29, 78, 137, 0.12));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.facultyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+}
+
+.facultyCard {
+  position: relative;
+  display: flex;
+  gap: var(--space-24);
+  padding: var(--space-24);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: riseIn 0.5s ease-out both;
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+}
+
+.facultyCard:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+/* 卡片顶部强调线（hover 展开） */
+.facultyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), rgba(29, 78, 137, 0.25));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.facultyCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-pop);
+  border-color: rgba(29, 78, 137, 0.28);
+}
+
+.facultyCard:hover::before {
+  transform: scaleX(1);
+}
+
+/* 卡片序号水印（编辑式节奏） */
+.facultyIndex {
+  position: absolute;
+  top: 8px;
+  right: 18px;
+  font-family: var(--font-heading);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.07;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 照片区：突出显示，hover 遮罩 + 主页提示 */
+.facultyPhotoLink {
+  position: relative;
+  flex-shrink: 0;
+  display: block;
+  width: clamp(170px, 28%, 230px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(29, 78, 137, 0.18);
+}
+
+.facultyPortrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease-out;
+}
+
+.facultyPhotoVeil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 52%, rgba(15, 35, 62, 0.62));
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.facultyPhotoHint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-inverse);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.facultyCard:hover .facultyPortrait {
+  transform: scale(1.05);
+}
+
+.facultyCard:hover .facultyPhotoVeil {
+  opacity: 1;
+}
+
+.facultyCard:hover .facultyPhotoHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.facultyBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.facultyHead {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.facultyName {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.facultyNameLink {
+  transition: color 0.15s ease-out;
+}
+
+.facultyCard:hover .facultyNameLink {
+  color: var(--color-primary);
+}
+
+.facultyTitle {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.facultyAffiliation {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.facultyAffiliation svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+
+.facultyBio {
+  font-size: var(--font-body-sm);
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.facultyMore {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: gap 0.15s ease-out;
+}
+
+.facultyMore:hover {
+  gap: 10px;
+}
+
+/* ---- 研究生（紧凑小卡，一排六个，头像适度缩小） ---- */
+.studentGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-16);
+}
+
+/* 单元容器：卡片 + 悬停详情面板 */
+.studentCell {
+  position: relative;
+  animation: riseIn 0.5s ease-out both;
+}
+
+/* 悬停/聚焦时提升整个单元（含浮窗）的层级。
+   单元因入场动画的 transform 各自形成层叠上下文，兄弟单元按 DOM 顺序绘制，
+   若只给面板加 z-index，面板仍会被相邻单元的层叠上下文覆盖；
+   因此需把「被悬停的单元」整体抬到最上层。 */
+.studentCell:hover,
+.studentCell:focus-within {
+  z-index: 100;
+}
+
+.studentCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-20) var(--space-8) var(--space-16);
+  text-align: center;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+}
+
+/* 入场错峰 */
+.studentCell:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.studentCell:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.studentCell:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.studentCell:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.studentCell:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.studentCell:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.studentCell:nth-child(8) {
+  animation-delay: 0.35s;
+}
+.studentCell:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.studentCell:nth-child(10) {
+  animation-delay: 0.45s;
+}
+.studentCell:nth-child(11) {
+  animation-delay: 0.5s;
+}
+.studentCell:nth-child(12) {
+  animation-delay: 0.55s;
+}
+
+/* 卡片顶部强调线（悬停展开；悬停面板时保持展开） */
+.studentCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), rgba(29, 78, 137, 0.25));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+  z-index: 1;
+}
+
+.studentCell:hover .studentCard,
+.studentCell:focus-within .studentCard {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(29, 78, 137, 0.22);
+}
+
+.studentCell:hover .studentCard::before,
+.studentCell:focus-within .studentCard::before {
+  transform: scaleX(1);
+}
+
+/* 头像区：方形圆角，尺寸适中（便于未来替换统一 AI 人像） */
+.studentPortrait {
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 4px 12px rgba(29, 78, 137, 0.16);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.studentCell:hover .studentCard .studentPortrait,
+.studentCell:focus-within .studentCard .studentPortrait {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(29, 78, 137, 0.22);
+}
+
+.studentName {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.studentMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.studentDegree {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  flex-shrink: 0;
+}
+
+.studentGrade {
+  color: var(--color-text-muted);
+}
+
+/* ---- 研究生悬停详情预览面板（轻量级成员档案） ---- */
+.studentPanel {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: 264px;
+  z-index: 999;
+  padding: 16px 18px 14px;
+  background: var(--color-bg-surface);
+  border: 1px solid rgba(29, 78, 137, 0.22);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out, visibility 0s linear 0.18s;
+  pointer-events: none;
+}
+
+/* 悬停卡片或聚焦卡片（键盘可达）时展开；面板自身保持可交互 */
+.studentCell:hover .studentPanel,
+.studentCell:focus-within .studentPanel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.18s ease-out 0.05s, transform 0.18s ease-out 0.05s, visibility 0s;
+}
+
+/* 卡片与面板之间的透明桥接区：鼠标从卡片移向面板时不触发关闭 */
+.studentPanel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -12px;
+  width: 12px;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.panelName {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.panelGrade {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--color-border-default);
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.panelGrade svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+
+.panelBlock {
+  margin-bottom: 10px;
+}
+
+.panelLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.panelTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.panelText {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.panelLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: gap 0.15s ease-out;
+}
+
+.panelLink:hover {
+  gap: 9px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.panelEmpty {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  opacity: 0.85;
+}
+
+/* ---- 毕业生（小圆圈头像小卡片，独立展示、弱化视觉权重） ---- */
+.alumniSection {
+  margin-bottom: var(--space-64);
+}
+
+.alumniHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+  padding: 0 8px 10px;
+  border-bottom: 1px dashed var(--color-border-strong);
+}
+
+.alumniTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-h3);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.alumniEn {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.alumniCount {
+  margin-left: auto;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.alumniGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12);
+}
+
+/* 毕业生单元：复用 studentCell 的定位/层级，但保持原有入场表现（无动画） */
+.alumniGrid > .studentCell {
+  animation: none;
+}
+
+.alumniCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: 10px 14px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease-out, transform 0.15s ease-out;
+}
+
+/* 悬停卡片（或悬停/聚焦展开的浮窗）时卡片轻微上浮 */
+.alumniGrid > .studentCell:hover .alumniCard,
+.alumniGrid > .studentCell:focus-within .alumniCard {
+  border-color: rgba(29, 78, 137, 0.3);
+  transform: translateY(-2px);
+}
+
+/* 小圆圈头像 */
+.alumniAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: block;
+  box-shadow: 0 2px 6px rgba(15, 35, 62, 0.12);
+}
+
+.alumniInfo {
+  min-width: 0;
+}
+
+.alumniName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: color 0.15s ease-out;
+}
+
+.alumniGrid > .studentCell:hover .alumniName,
+.alumniGrid > .studentCell:focus-within .alumniName {
+  color: var(--color-primary);
+}
+
+.alumniMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.alumniYear {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+/* ---- 空态 ---- */
+.empty {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  padding: var(--space-16) 0;
+}
+
+/* ---- 响应式 ---- */
+/* ---- 响应式 ----
+   详情面板翻转规则按网格作用域区分：
+   在读研究生 桌面 6 列 / 平板 4 列；毕业生 桌面 4 列 / 平板 3 列。
+   最右列（必要时最右两列）的面板翻转到卡片左侧，避免溢出容器。 */
+@media (min-width: 1200px) {
+  .studentGrid > .studentCell:nth-child(6n-1) .studentPanel,
+  .studentGrid > .studentCell:nth-child(6n) .studentPanel,
+  .alumniGrid > .studentCell:nth-child(4n) .studentPanel {
+    left: auto;
+    right: calc(100% + 12px);
+  }
+  .studentGrid > .studentCell:nth-child(6n-1) .studentPanel::before,
+  .studentGrid > .studentCell:nth-child(6n) .studentPanel::before,
+  .alumniGrid > .studentCell:nth-child(4n) .studentPanel::before {
+    left: auto;
+    right: -12px;
+    width: 12px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .studentGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .alumniGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .studentGrid > .studentCell:nth-child(4n-1) .studentPanel,
+  .studentGrid > .studentCell:nth-child(4n) .studentPanel,
+  .alumniGrid > .studentCell:nth-child(3n-1) .studentPanel,
+  .alumniGrid > .studentCell:nth-child(3n) .studentPanel {
+    left: auto;
+    right: calc(100% + 12px);
+  }
+  .studentGrid > .studentCell:nth-child(4n-1) .studentPanel::before,
+  .studentGrid > .studentCell:nth-child(4n) .studentPanel::before,
+  .alumniGrid > .studentCell:nth-child(3n-1) .studentPanel::before,
+  .alumniGrid > .studentCell:nth-child(3n) .studentPanel::before {
+    left: auto;
+    right: -12px;
+    width: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .facultyBand {
+    margin-bottom: var(--space-48);
+    padding: var(--space-20) var(--space-16) var(--space-24);
+  }
+
+  .facultyGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+
+  .facultyCard {
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-16);
+  }
+
+  .facultyIndex {
+    font-size: 56px;
+    top: 6px;
+    right: 14px;
+  }
+
+  .facultyPhotoLink {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .facultyBio {
+    -webkit-line-clamp: 3;
+  }
+
+  .studentGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-12);
+  }
+
+  .studentPortrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  /* 移动端：面板改为在卡片下方浮出，避免横向溢出 */
+  .studentPanel {
+    width: 240px;
+    top: calc(100% + 10px);
+  }
+  .studentPanel::before {
+    top: -10px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 10px;
+  }
+  /* 在读研究生（3 列）对齐 */
+  .studentGrid > .studentCell:nth-child(3n+1) .studentPanel {
+    left: 0;
+    right: auto;
+  }
+  .studentGrid > .studentCell:nth-child(3n+2) .studentPanel {
+    left: 50%;
+    right: auto;
+    margin-left: -120px;
+  }
+  .studentGrid > .studentCell:nth-child(3n) .studentPanel {
+    left: auto;
+    right: 0;
+  }
+  /* 毕业生（2 列）对齐 */
+  .alumniGrid > .studentCell:nth-child(2n+1) .studentPanel {
+    left: 0;
+    right: auto;
+  }
+  .alumniGrid > .studentCell:nth-child(2n) .studentPanel {
+    left: auto;
+    right: 0;
+  }
+
+  .alumniGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 尊重系统减弱动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .facultyCard,
+  .studentCell {
+    animation: none;
+  }
+  .facultyCard::before,
+  .studentCard::before {
+    transition: none;
+  }
+  .studentPanel {
+    transition: none;
+  }
+}

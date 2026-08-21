@@ -1,0 +1,87 @@
+.section {
+  margin-bottom: var(--space-64);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-24);
+}
+
+.titles {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
+}
+
+/* 板块序号（编辑式节奏，如 01 / 02 / 03） */
+.index {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.4;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  position: relative;
+  padding-left: var(--space-16);
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0.85em;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.en {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.subtitle {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  flex-basis: 100%;
+  margin-top: -8px;
+}
+
+.action {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  padding: 6px 4px;
+  transition: gap 0.15s ease-out, color 0.15s ease-out;
+}
+
+.action:hover {
+  gap: 8px;
+  color: var(--color-primary-hover);
+}
+
+@media (max-width: 767px) {
+  .section {
+    margin-bottom: var(--space-48);
+  }
+  .en {
+    display: none;
+  }
+}

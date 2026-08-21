@@ -1,0 +1,134 @@
+.footer {
+  background: linear-gradient(180deg, #16315c 0%, var(--color-footer-bg) 55%);
+  color: var(--color-footer-text);
+  margin-top: var(--space-64);
+  border-top: 3px solid var(--color-primary);
+}
+
+/* 主内容容器：自带容器宽度与水平留白（不依赖全局 .container，避免 padding 覆盖冲突）；
+   顶部留白作用于整个四列内容区，与顶部主色分割线保持明显间距 */
+.inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--space-80) var(--space-24) 0;
+}
+
+/* 四栏：品牌信息约 35%，其余三栏平均分布；四列顶部统一基线对齐 */
+.grid {
+  display: grid;
+  grid-template-columns: 8fr 5fr 5fr 5fr;
+  gap: var(--space-24);
+  align-items: start;
+  padding-bottom: var(--space-32);
+}
+
+/* ---- 品牌栏 ---- */
+.brandName {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-footer-heading);
+  margin-bottom: var(--space-8);
+}
+
+.brandEn {
+  font-size: 13px;
+  color: var(--color-footer-text);
+  opacity: 0.85;
+  margin-bottom: var(--space-12);
+}
+
+.brandDesc {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 320px;
+  opacity: 0.9;
+}
+
+/* ---- 栏目 ---- */
+.colTitle {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-footer-heading);
+  margin-bottom: var(--space-20);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.link {
+  font-size: 14px;
+  color: var(--color-footer-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  transition: color 0.15s ease-out;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.externalIcon {
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  margin-top: 3px;
+  opacity: 0.8;
+}
+
+/* 联系方式文字：中文自然断行，长串英文（如邮箱）超长时才强制折行，减少异常断行 */
+.contactText {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* ---- 底部版权 ---- */
+.bottom {
+  border-top: 1px solid var(--color-footer-border);
+  padding: var(--space-16) 0 var(--space-24);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+  font-size: var(--font-caption);
+  color: var(--color-footer-text);
+  opacity: 0.75;
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 1199px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    padding: var(--space-80) var(--space-16) 0;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+  .bottom {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+}

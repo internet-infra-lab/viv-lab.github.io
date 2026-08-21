@@ -1,0 +1,79 @@
+[
+  {
+    "id": "dir6",
+    "order": 1,
+    "pillar": "internet-infra",
+    "icon": "hpc",
+    "title": "DNS 与标识解析",
+    "en": "DNS & Identifier Resolution",
+    "summary": "研究域名系统（DNS）与互联网标识解析的关键技术，支撑互联网基础资源的规划、建设与稳定运行。",
+    "lead": "域名系统是互联网的基础命名与寻址设施。本方向研究 DNS 与标识解析的规划建设、性能评估与标准化，为互联网基础资源的稳定运行提供支撑。",
+    "content": [
+      "本方向面向域名系统（DNS）与互联网标识解析等基础性问题，覆盖域名基础资源的规划建设、解析性能与服务质量评估、中文域名与国际化域名的标准化推广，以及网络标识体系的演进研究。",
+      "团队曾负责国家域名全球服务平台规划建设与关键系统研制，推动中文域名标准化及“.中国”国家顶级域名入根，参与创建互联网域名管理技术国家工程实验室，在域名数据监控、解析性能与安全评估等方面积累了长期的研究基础。",
+      "该方向以工程成果与标准贡献为主；其延伸的安全与数据问题，由实验室的「网络安全与隐私保护」「数据互操作」方向承接（论文成果见对应方向）。"
+    ],
+    "keywords": ["域名系统", "DNS", "标识解析", "中文域名", "互联网基础资源"],
+    "methods": ["域名数据监控", "解析性能评估", "域名标准化", "标识解析技术"],
+    "highlights": [
+      { "type": "platform", "title": "国家域名全球服务平台", "desc": "负责规划建设与关键系统研制" },
+      { "type": "standard", "title": "中文域名标准化与“.中国”入根", "desc": "推动中文域名标准化及国家顶级域名入根" },
+      { "type": "platform", "title": "互联网域名管理技术国家工程实验室", "desc": "参与创建，李晓东研究员曾任主任" }
+    ],
+    "featuredPapers": []
+  },
+  {
+    "id": "dir7",
+    "order": 2,
+    "pillar": "internet-infra",
+    "icon": "search",
+    "title": "网络安全与隐私保护",
+    "en": "Cybersecurity & Privacy",
+    "summary": "研究 DNS 安全、域名滥用检测与隐私保护的流数据采集技术，保障互联网基础设施的安全可信运行。",
+    "lead": "本方向聚焦互联网基础设施的安全问题，研究 DNS 缓存投毒等攻击的防御机制、基于大规模解析数据的域名滥用早期检测，以及隐私保护的流数据采集与处理协议。",
+    "content": [
+      "DNS 是互联网的关键基础设施，也是网络攻击的高发面。本方向研究 DNS 缓存投毒等攻击的检测与防御机制，以及域名滥用行为的早期识别方法。",
+      "代表性工作包括：基于区块链与激励机制的 DNS 可信解析架构（TI-DNS 系列，TrustCom 2023 / Computer Networks 2024）、面向注册阶段域名滥用检测的深度特征交互框架（DeFiAD，TrustCom 2025）、基于本地差分隐私与草图协议的隐私流数据采集协议（PrivSketch / PSF，DEXA 2023 / IEEE IoT Journal 2024）、基于可验证身份与策略授权的跨域访问控制（POLARIS，TrustCom 2025）等。"
+    ],
+    "keywords": ["DNS 安全", "域名滥用检测", "区块链可信解析", "隐私保护", "异常检测"],
+    "methods": ["区块链可信解析", "深度特征交互", "域名滥用检测", "本地差分隐私", "草图协议"],
+    "highlights": [],
+    "featuredPapers": ["ti-dns-trustcom-2023", "dns-backbone-comnet-2024", "defiad-trustcom-2025", "streaming-data-iotj-2024", "privsketch-dexa-2023", "illegal-webpage-bigdata-2022"]
+  },
+  {
+    "id": "dir8",
+    "order": 3,
+    "pillar": "data-interop",
+    "icon": "ml",
+    "title": "数据互操作",
+    "en": "Data Interoperation",
+    "summary": "研究数据与应用解耦背景下的互操作、授权与合规技术，支撑跨主体、跨系统的数据安全共享与可信流通。",
+    "lead": "数据互操作是本实验室的核心研究方向，聚焦数据与应用解耦后的互操作、授权与合规问题，为数据要素的合规流通提供技术支撑。",
+    "content": [
+      "本方向面向数据要素化与数据流通需求，研究数据与应用解耦场景下的去中心化数据互操作方案、可验证身份与策略驱动的跨域授权机制，以及跨境数据传输的合规建模方法。",
+      "代表性工作包括：数据自持导向的去中心化互操作架构（DIA，COMPSAC 2023；Dominate Data by Yourself，WWW Journal 2025）、基于 DNS 的授权框架（DiSAuth，Computer Networks 2024）、跨域访问控制体系（FlexAuth / POLARIS，TrustCom 2023 / 2025）、跨境数据合规管理系统（CBCMS，IEEE BigData 2024）与多司法辖区合规策略建模（Information and Software Technology 2026）等。"
+    ],
+    "keywords": ["数据互操作", "数据授权", "数据所有权", "访问控制", "跨境数据合规"],
+    "methods": ["去中心化数据互操作", "可验证身份", "策略授权", "跨境数据合规建模", "数据所有权"],
+    "highlights": [],
+    "featuredPapers": ["dia-compsac-2023", "dominate-data-wwwj-2025", "disauth-comnet-2024", "flexauth-trustcom-2023", "polaris-trustcom-2025", "cbcms-bigdata-2024", "structured-policy-ist-2026"]
+  },
+  {
+    "id": "dir9",
+    "order": 4,
+    "pillar": "data-interop",
+    "icon": "llm",
+    "title": "数据管理与分析",
+    "en": "Data Management & Analytics",
+    "summary": "研究大规模高维数据与时间序列数据的高性能索引、检索与分析技术。",
+    "lead": "本方向研究大规模高维数据与时间序列数据的管理与分析系统，重点关注具有理论保证的近似最近邻（ANN）检索、内存索引与并行化技术，为数据平台建设提供底层支撑。",
+    "content": [
+      "高维数据检索是推荐系统、数据平台与互操作系统共用的底层技术。本方向研究具有查询质量理论保证的近似最近邻检索方法，以及面向多核 CPU 的并行内存索引技术。",
+      "代表性工作包括：基于动态编码树的局部敏感哈希方案（DET-LSH，VLDB 2024；PDET-LSH，IEEE TKDE 2026）、面向高维数据的子空间碰撞检索框架（Subspace Collision，SIGMOD 2025）等，在索引与查询效率上较现有方法取得数量级提升。"
+    ],
+    "keywords": ["近似最近邻搜索", "局部敏感哈希", "内存索引", "高维数据", "并行计算"],
+    "methods": ["近似最近邻搜索", "局部敏感哈希", "动态编码树", "子空间碰撞", "多核并行"],
+    "highlights": [],
+    "featuredPapers": ["det-lsh-vldb-2024", "pdet-lsh-tkde-2026", "subspace-collision-sigmod-2025"]
+  }
+]

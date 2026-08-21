@@ -1,0 +1,31 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.primary {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+
+.neutral {
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-default);
+}
+
+.success {
+  background: rgba(21, 128, 61, 0.1);
+  color: var(--color-success);
+}
+
+.warning {
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--color-warning);
+}

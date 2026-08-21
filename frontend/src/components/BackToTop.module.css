@@ -1,0 +1,41 @@
+.btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-bg-page);
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease-out, color 0.15s ease-out;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .btn {
+    right: 16px;
+    bottom: 80px;
+  }
+}

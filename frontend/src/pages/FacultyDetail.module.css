@@ -1,0 +1,356 @@
+/* ============================================================
+   导师详情页样式（/faculty/:id）
+   面包屑 / 段落 / 论文列表复用 detail.module.css
+   ============================================================ */
+
+/* ---- 通用章节 ---- */
+.section {
+  margin-bottom: var(--space-48);
+}
+
+.sectionTitle {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-16);
+  padding-left: var(--space-16);
+  position: relative;
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0.85em;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  margin-bottom: var(--space-16);
+}
+
+.sectionHead .sectionTitle {
+  margin-bottom: 0;
+}
+
+.moreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-body-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  white-space: nowrap;
+  transition: color 0.15s ease-out;
+}
+
+.moreLink:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ---- 个人信息区：大照片框（3:4，宽 320px） ---- */
+.profile {
+  display: flex;
+  gap: var(--space-48);
+  margin-bottom: var(--space-48);
+}
+
+.photoBlock {
+  width: 320px;
+  flex-shrink: 0;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+/* 照片框背后错位装饰底（primary-tint + 细描边，模拟画框） */
+.photoBlock::after {
+  content: '';
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(29, 78, 137, 0.35);
+  background: var(--color-primary-tint);
+  z-index: 0;
+}
+
+.photoImg,
+.photoText {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+}
+
+.photoImg {
+  object-fit: cover;
+}
+
+.photoText {
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 72px;
+  font-weight: 600;
+}
+
+.profileBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+}
+
+.profileName {
+  font-size: var(--font-h1);
+  font-weight: 700;
+}
+
+.profileTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.affiliation {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-top: var(--space-4);
+}
+
+.affiliation svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.area {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-top: var(--space-8);
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16) var(--space-24);
+  margin-top: var(--space-16);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-body-sm);
+  color: var(--color-primary);
+  transition: color 0.15s ease-out;
+}
+
+.contactLink:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ---- 研究方向卡片 ---- */
+.dirGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-16);
+}
+
+.dirCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.dirCard:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.dirCard:hover .dirName {
+  color: var(--color-primary);
+}
+
+.dirHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--color-primary);
+}
+
+.dirName {
+  font-size: var(--font-h4);
+  font-weight: 600;
+  transition: color 0.15s ease-out;
+}
+
+.dirSummary {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dirMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: var(--space-8);
+  font-size: var(--font-body-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* ---- 时间线（C-13：教育经历 / 工作履历） ---- */
+.timeline {
+  margin-left: 6px;
+}
+
+.timelineItem {
+  position: relative;
+  padding: 0 0 var(--space-24) var(--space-24);
+  border-left: 2px solid var(--color-border-strong);
+}
+
+.timelineItem:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.timelinePeriod {
+  font-size: var(--font-label);
+  font-weight: 600;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.timelineMain {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.timelineSub {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ---- 招生信息（全站唯一琥珀色强调，design.md C-15） ---- */
+.recruit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  padding: var(--space-32);
+  background: var(--color-recruit-tint);
+  border-left: 4px solid var(--color-recruit-amber);
+  border-radius: var(--radius-lg);
+}
+
+.recruitTitle {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-8);
+}
+
+.recruitDesc {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  max-width: 720px;
+}
+
+.recruitBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  background: var(--color-recruit-amber);
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: filter 0.15s ease-out;
+}
+
+.recruitBtn:hover {
+  filter: brightness(1.1);
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 767px) {
+  .profile {
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .photoBlock {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .photoText {
+    font-size: 56px;
+  }
+
+  .dirGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .recruit {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recruitBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

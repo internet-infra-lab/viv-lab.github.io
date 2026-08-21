@@ -1,0 +1,70 @@
+/* 招生招聘横幅（design.md C-15，全站唯一暖色强调区块）
+   注意：banner 自带容器宽度与水平留白，不依赖全局 .container（避免 padding/margin 被覆盖） */
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-32);
+  max-width: var(--container-width);
+  margin: var(--space-32) auto var(--space-64);
+  background:
+    radial-gradient(120% 160% at 0% 0%, rgba(180, 83, 9, 0.1), transparent 55%),
+    var(--color-recruit-tint);
+  border: 1px solid rgba(180, 83, 9, 0.18);
+  border-left: 4px solid var(--color-recruit-amber);
+  border-radius: var(--radius-lg);
+  /* 上下内边距加大，卡片更舒展；左右随视口自适应，保持充足留白 */
+  padding: var(--space-32) clamp(var(--space-24), 3vw, var(--space-48));
+  flex-wrap: wrap;
+}
+
+/* 左侧文案区：占据剩余空间，按钮稳居右侧 */
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.desc {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-top: var(--space-12);
+  max-width: 640px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: var(--radius-md);
+  background: var(--color-recruit-amber);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: background 0.15s ease-out;
+}
+
+.cta:hover {
+  background: #92400e;
+}
+
+@media (max-width: 767px) {
+  .banner {
+    padding: var(--space-24) var(--space-20);
+    margin-bottom: var(--space-48);
+  }
+  .cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

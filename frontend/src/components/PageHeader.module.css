@@ -1,0 +1,75 @@
+/* ============================================================
+   内页标题区（章节入口风格，非传统横幅）
+   结构：章节编号（01 ——）/ 主标题 / 英文副题 / 一句话描述
+   背景：透明，延续主体低透明度网络纹理（body 纹理自然透出）
+   ============================================================ */
+
+.header {
+  padding: var(--space-48) 0 var(--space-36, 36px);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 章节编号（01 ——） */
+.index {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--space-16);
+}
+
+.index::after {
+  content: '';
+  width: 44px;
+  height: 1px;
+  background: var(--color-primary);
+  opacity: 0.35;
+}
+
+.title {
+  font-size: var(--font-h1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.en {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.desc {
+  margin-top: var(--space-16);
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: var(--space-32) 0 var(--space-28);
+  }
+  .index {
+    margin-bottom: var(--space-12);
+    font-size: 13px;
+  }
+  .desc {
+    margin-top: var(--space-12);
+    font-size: var(--font-body-sm);
+  }
+}

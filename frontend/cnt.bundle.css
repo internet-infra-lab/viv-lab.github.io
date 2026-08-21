@@ -1,0 +1,803 @@
+/* src/components/PageHeader.module.css */
+.PageHeader_header {
+  padding: var(--space-48) 0 var(--space-36, 36px);
+  border-bottom: 1px solid var(--color-border-default);
+}
+.PageHeader_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.PageHeader_index {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--space-16);
+}
+.PageHeader_index::after {
+  content: "";
+  width: 44px;
+  height: 1px;
+  background: var(--color-primary);
+  opacity: 0.35;
+}
+.PageHeader_title {
+  font-size: var(--font-h1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+.PageHeader_en {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+.PageHeader_desc {
+  margin-top: var(--space-16);
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  max-width: 640px;
+  line-height: 1.8;
+}
+@media (max-width: 767px) {
+  .PageHeader_header {
+    padding: var(--space-32) 0 var(--space-28);
+  }
+  .PageHeader_index {
+    margin-bottom: var(--space-12);
+    font-size: 13px;
+  }
+  .PageHeader_desc {
+    margin-top: var(--space-12);
+    font-size: var(--font-body-sm);
+  }
+}
+
+/* src/components/Section.module.css */
+.Section_section {
+  margin-bottom: var(--space-64);
+}
+.Section_header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-24);
+}
+.Section_titles {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
+}
+.Section_index {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.4;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.Section_title {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  position: relative;
+  padding-left: var(--space-16);
+}
+.Section_title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0.85em;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+.Section_en {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+.Section_subtitle {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  flex-basis: 100%;
+  margin-top: -8px;
+}
+.Section_action {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  padding: 6px 4px;
+  transition: gap 0.15s ease-out, color 0.15s ease-out;
+}
+.Section_action:hover {
+  gap: 8px;
+  color: var(--color-primary-hover);
+}
+@media (max-width: 767px) {
+  .Section_section {
+    margin-bottom: var(--space-48);
+  }
+  .Section_en {
+    display: none;
+  }
+}
+
+/* src/components/Tag.module.css */
+.Tag_tag {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.Tag_primary {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+.Tag_neutral {
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-default);
+}
+.Tag_success {
+  background: rgba(21, 128, 61, 0.1);
+  color: var(--color-success);
+}
+.Tag_warning {
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--color-warning);
+}
+
+/* src/pages/Team.module.css */
+@keyframes Team_riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.Team_facultyBand {
+  position: relative;
+  margin: 0 0 var(--space-64);
+  padding: var(--space-32) var(--space-32) var(--space-40, 40px);
+  background:
+    radial-gradient(
+      480px 220px at 92% -30%,
+      rgba(29, 78, 137, 0.1),
+      transparent 60%),
+    linear-gradient(
+      180deg,
+      #f4f8fd 0%,
+      #eaf1fa 100%);
+  border: 1px solid rgba(29, 78, 137, 0.1);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.Team_facultyBand::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-primary),
+      rgba(29, 78, 137, 0.12));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.Team_facultyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+}
+.Team_facultyCard {
+  position: relative;
+  display: flex;
+  gap: var(--space-24);
+  padding: var(--space-24);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: Team_riseIn 0.5s ease-out both;
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.25s ease-out,
+    border-color 0.25s ease-out;
+}
+.Team_facultyCard:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.Team_facultyCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-primary),
+      rgba(29, 78, 137, 0.25));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+.Team_facultyCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-pop);
+  border-color: rgba(29, 78, 137, 0.28);
+}
+.Team_facultyCard:hover::before {
+  transform: scaleX(1);
+}
+.Team_facultyIndex {
+  position: absolute;
+  top: 8px;
+  right: 18px;
+  font-family: var(--font-heading);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.07;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  user-select: none;
+}
+.Team_facultyPhotoLink {
+  position: relative;
+  flex-shrink: 0;
+  display: block;
+  width: clamp(170px, 28%, 230px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(29, 78, 137, 0.18);
+}
+.Team_facultyPortrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease-out;
+}
+.Team_facultyPhotoVeil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 52%,
+      rgba(15, 35, 62, 0.62));
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.Team_facultyPhotoHint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-inverse);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+.Team_facultyCard:hover .Team_facultyPortrait {
+  transform: scale(1.05);
+}
+.Team_facultyCard:hover .Team_facultyPhotoVeil {
+  opacity: 1;
+}
+.Team_facultyCard:hover .Team_facultyPhotoHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+.Team_facultyBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Team_facultyHead {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border-default);
+}
+.Team_facultyName {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.Team_facultyNameLink {
+  transition: color 0.15s ease-out;
+}
+.Team_facultyCard:hover .Team_facultyNameLink {
+  color: var(--color-primary);
+}
+.Team_facultyTitle {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.Team_facultyAffiliation {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+.Team_facultyAffiliation svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+.Team_facultyBio {
+  font-size: var(--font-body-sm);
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.Team_facultyMore {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: gap 0.15s ease-out;
+}
+.Team_facultyMore:hover {
+  gap: 10px;
+}
+.Team_studentGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-16);
+}
+.Team_studentCell {
+  position: relative;
+  animation: Team_riseIn 0.5s ease-out both;
+}
+.Team_studentCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-20) var(--space-8) var(--space-16);
+  text-align: center;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.25s ease-out,
+    border-color 0.25s ease-out;
+}
+.Team_studentCell:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.Team_studentCell:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.Team_studentCell:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.Team_studentCell:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.Team_studentCell:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.Team_studentCell:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.Team_studentCell:nth-child(8) {
+  animation-delay: 0.35s;
+}
+.Team_studentCell:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.Team_studentCell:nth-child(10) {
+  animation-delay: 0.45s;
+}
+.Team_studentCell:nth-child(11) {
+  animation-delay: 0.5s;
+}
+.Team_studentCell:nth-child(12) {
+  animation-delay: 0.55s;
+}
+.Team_studentCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-primary),
+      rgba(29, 78, 137, 0.25));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+  z-index: 1;
+}
+.Team_studentCell:hover .Team_studentCard,
+.Team_studentCell:focus-within .Team_studentCard {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(29, 78, 137, 0.22);
+}
+.Team_studentCell:hover .Team_studentCard::before,
+.Team_studentCell:focus-within .Team_studentCard::before {
+  transform: scaleX(1);
+}
+.Team_studentPortrait {
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 4px 12px rgba(29, 78, 137, 0.16);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.Team_studentCell:hover .Team_studentCard .Team_studentPortrait,
+.Team_studentCell:focus-within .Team_studentCard .Team_studentPortrait {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(29, 78, 137, 0.22);
+}
+.Team_studentName {
+  font-size: 15px;
+  font-weight: 600;
+}
+.Team_studentMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.Team_studentDegree {
+  display: inline-block;
+  padding: 1px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.Team_metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  flex-shrink: 0;
+}
+.Team_studentGrade {
+  color: var(--color-text-muted);
+}
+.Team_studentPanel {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: 264px;
+  z-index: 30;
+  padding: 16px 18px 14px;
+  background: var(--color-bg-surface);
+  border: 1px solid rgba(29, 78, 137, 0.22);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out,
+    visibility 0s linear 0.18s;
+  pointer-events: none;
+}
+.Team_studentCell:hover .Team_studentPanel,
+.Team_studentCell:focus-within .Team_studentPanel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition:
+    opacity 0.18s ease-out 0.05s,
+    transform 0.18s ease-out 0.05s,
+    visibility 0s;
+}
+.Team_panelHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.Team_panelName {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.Team_panelGrade {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--color-border-default);
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.Team_panelGrade svg {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+.Team_panelBlock {
+  margin-bottom: 10px;
+}
+.Team_panelLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+.Team_panelTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.Team_panelText {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+.Team_panelLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: gap 0.15s ease-out;
+}
+.Team_panelLink:hover {
+  gap: 9px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.Team_panelEmpty {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  opacity: 0.85;
+}
+.Team_alumniSection {
+  margin-bottom: var(--space-64);
+}
+.Team_alumniHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+  padding: 0 8px 10px;
+  border-bottom: 1px dashed var(--color-border-strong);
+}
+.Team_alumniTitle {
+  font-family: var(--font-heading);
+  font-size: var(--font-h3);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+.Team_alumniEn {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+.Team_alumniCount {
+  margin-left: auto;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.Team_alumniGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12);
+}
+.Team_alumniCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: 10px 14px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease-out, transform 0.15s ease-out;
+}
+.Team_alumniCard:hover {
+  border-color: rgba(29, 78, 137, 0.3);
+  transform: translateY(-2px);
+}
+.Team_alumniAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: block;
+  box-shadow: 0 2px 6px rgba(15, 35, 62, 0.12);
+}
+.Team_alumniInfo {
+  min-width: 0;
+}
+.Team_alumniName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: color 0.15s ease-out;
+}
+.Team_alumniCard:hover .Team_alumniName {
+  color: var(--color-primary);
+}
+.Team_alumniMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.Team_alumniYear {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+.Team_empty {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-muted);
+  padding: var(--space-16) 0;
+}
+@media (min-width: 1200px) {
+  .Team_studentCell:nth-child(6n-1) .Team_studentPanel,
+  .Team_studentCell:nth-child(6n) .Team_studentPanel {
+    left: auto;
+    right: calc(100% + 12px);
+  }
+}
+@media (max-width: 1199px) {
+  .Team_studentGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .Team_alumniGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .Team_studentCell:nth-child(4n-1) .Team_studentPanel,
+  .Team_studentCell:nth-child(4n) .Team_studentPanel {
+    left: auto;
+    right: calc(100% + 12px);
+  }
+}
+@media (max-width: 767px) {
+  .Team_facultyBand {
+    margin-bottom: var(--space-48);
+    padding: var(--space-20) var(--space-16) var(--space-24);
+  }
+  .Team_facultyGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  .Team_facultyCard {
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-16);
+  }
+  .Team_facultyIndex {
+    font-size: 56px;
+    top: 6px;
+    right: 14px;
+  }
+  .Team_facultyPhotoLink {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+  .Team_facultyBio {
+    -webkit-line-clamp: 3;
+  }
+  .Team_studentGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-12);
+  }
+  .Team_studentPortrait {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+  .Team_studentPanel {
+    width: 240px;
+    top: calc(100% + 10px);
+  }
+  .Team_studentCell:nth-child(3n+1) .Team_studentPanel {
+    left: 0;
+    right: auto;
+  }
+  .Team_studentCell:nth-child(3n+2) .Team_studentPanel {
+    left: 50%;
+    right: auto;
+    margin-left: -120px;
+  }
+  .Team_studentCell:nth-child(3n) .Team_studentPanel {
+    left: auto;
+    right: 0;
+  }
+  .Team_alumniGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .Team_facultyCard,
+  .Team_studentCell {
+    animation: none;
+  }
+  .Team_facultyCard::before,
+  .Team_studentCard::before {
+    transition: none;
+  }
+  .Team_studentPanel {
+    transition: none;
+  }
+}

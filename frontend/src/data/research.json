@@ -1,0 +1,25 @@
+{
+  "page": {
+    "title": "研究方向",
+    "en": "Research Directions",
+    "intro": "实验室以「互联网基础技术」与「数据互操作」为两条研究主线，下设四个研究方向，分别面向互联网基础设施的安全稳定运行与数据的合规流通。各方向在问题定义、技术与数据上相互支撑。"
+  },
+  "pillars": [
+    {
+      "id": "internet-infra",
+      "order": 1,
+      "title": "互联网基础技术",
+      "en": "Internet Fundamental Technology",
+      "desc": "面向域名系统、标识解析与网络安全等互联网基础问题，保障互联网基础设施的稳定与安全可信运行。",
+      "directions": ["dir6", "dir7"]
+    },
+    {
+      "id": "data-interop",
+      "order": 2,
+      "title": "数据互操作",
+      "en": "Data Interoperation",
+      "desc": "面向数据要素化与流通需求，研究数据互操作、授权合规与数据管理技术，支撑数据的安全共享与可信流通。",
+      "directions": ["dir8", "dir9"]
+    }
+  ]
+}

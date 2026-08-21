@@ -1,0 +1,284 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border-default);
+  transition: box-shadow 0.2s ease-out, background 0.2s ease-out;
+}
+
+.navbarScrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sticky);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  height: var(--nav-height);
+  transition: height 0.2s ease-out;
+}
+
+.navbarScrolled .inner {
+  height: var(--nav-height-scrolled);
+}
+
+/* ---- Logo ---- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2a63a8 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(29, 78, 137, 0.28);
+}
+
+/* 图片 Logo（frontend/public/logo.jpg）：
+   导航栏直接放原图，无方框无阴影；图片本身为白色背景，与白底导航栏自然融合 */
+.logoImg {
+  height: 44px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.logoName {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.logoEn {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ---- 桌面导航 ---- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.navLink {
+  position: relative;
+  padding: 8px 13px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  transition: color 0.15s ease-out, background 0.15s ease-out;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.navLinkActive {
+  color: var(--color-primary);
+  font-weight: 600;
+  background: transparent;
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: 3px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+/* ---- 右侧操作区 ---- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.langSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-right: var(--space-8);
+}
+
+.langActive {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: background 0.15s ease-out, color 0.15s ease-out;
+}
+
+.iconBtn:hover {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+
+.menuBtn {
+  display: none;
+}
+
+.searchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchForm {
+  position: absolute;
+  right: 44px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-pop);
+  overflow: hidden;
+  animation: searchIn 0.2s ease-out;
+}
+
+@keyframes searchIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text-primary);
+  width: 220px;
+  background: transparent;
+}
+
+.searchSubmit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ---- 移动端抽屉 ---- */
+.drawer {
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  .nav {
+    display: none;
+  }
+  .menuBtn {
+    display: inline-flex;
+  }
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-8) var(--space-24) var(--space-24);
+    border-top: 1px solid var(--color-border-default);
+    background: var(--color-bg-page);
+    box-shadow: var(--shadow-pop);
+  }
+  .drawer .navLink {
+    padding: 14px 12px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--color-border-default);
+    border-radius: 0;
+  }
+  .drawer .navLink:hover {
+    background: var(--color-primary-tint);
+  }
+  .drawer .navLink:last-child {
+    border-bottom: none;
+  }
+  .drawer .navLinkActive {
+    background: var(--color-primary-tint);
+  }
+  .drawer .navLinkActive::after {
+    display: none;
+  }
+  .langSwitch {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    gap: var(--space-12);
+  }
+  .logoMark {
+    width: 36px;
+    height: 36px;
+    font-size: 10px;
+  }
+  .logoImg {
+    height: 38px;
+    max-width: 160px;
+  }
+  .logoEn {
+    display: none;
+  }
+  .logoName {
+    font-size: 15px;
+  }
+}

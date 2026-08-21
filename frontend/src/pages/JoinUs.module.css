@@ -1,0 +1,381 @@
+/* ============================================================
+   招生招聘页（Join Us）
+   风格：与全站一致的学术蓝、编辑式卡片、低边框、克制动效
+   ============================================================ */
+
+/* ---- 招募对象卡片 ---- */
+.groupGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+}
+
+.groupCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: var(--space-24);
+  background: var(--color-bg-surface);
+  border: 1px solid transparent;
+  border-top: 3px solid transparent;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.groupCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-top-color: var(--color-primary);
+}
+
+.groupIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(29, 78, 137, 0.08);
+  transition: background 0.2s ease-out, color 0.2s ease-out;
+}
+
+.groupCard:hover .groupIcon {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.groupTitle {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.groupDesc {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.groupPoints {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.groupPoints li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.groupPoints li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.45;
+}
+
+/* ---- 我们期待 | 你可以参与 双栏 ---- */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-48);
+  align-items: start;
+}
+
+.expectList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.expectItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+}
+
+.expectIcon {
+  color: var(--color-success);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.participateList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.participateItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.participateItem:hover {
+  border-color: rgba(29, 78, 137, 0.35);
+  box-shadow: var(--shadow-card);
+}
+
+.participateIndex {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-primary);
+  opacity: 0.45;
+  flex-shrink: 0;
+}
+
+.participateBody {
+  min-width: 0;
+}
+
+.participateTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.participateDesc {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* ---- 研究方向横幅 ---- */
+.directionBand {
+  background:
+    radial-gradient(120% 160% at 100% 0%, rgba(29, 78, 137, 0.08), transparent 55%),
+    var(--color-bg-alt);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  margin-bottom: var(--space-64);
+}
+
+.directionInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.directionHeading {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  position: relative;
+  padding-left: var(--space-16);
+}
+
+.directionHeading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0.85em;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.directionTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.directionNote {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* ---- 联系方式 ---- */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-24);
+}
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-20) var(--space-24);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+a.contactCard:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.contactLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contactEmail {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-primary);
+  word-break: break-all;
+}
+
+.contactPending {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  padding: 4px 0;
+}
+
+.contactNote {
+  font-size: var(--font-caption);
+  color: var(--color-text-muted);
+}
+
+/* ---- 邮件主题建议 ---- */
+.subjectBox {
+  margin-top: var(--space-24);
+  padding: var(--space-16) var(--space-20);
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subjectRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+}
+
+.subjectHead {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.subjectCode {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-primary-hover);
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--color-primary);
+  word-break: break-all;
+}
+
+.subjectHint {
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* ---- 联系 CTA ---- */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-top: var(--space-32);
+  flex-wrap: wrap;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(29, 78, 137, 0.25);
+  transition: filter 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.ctaBtn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(29, 78, 137, 0.3);
+}
+
+.ghostBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.15s ease-out;
+}
+
+.ghostBtn:hover {
+  background: var(--color-primary-tint);
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 1199px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+    gap: var(--space-32);
+  }
+}
+
+@media (max-width: 767px) {
+  .groupGrid,
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  .directionBand {
+    padding: var(--space-24) var(--space-16);
+    margin-bottom: var(--space-48);
+  }
+  .ctaBtn,
+  .ghostBtn {
+    justify-content: center;
+    width: 100%;
+  }
+}

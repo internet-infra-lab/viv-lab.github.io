@@ -1,0 +1,228 @@
+[
+  {
+    "id": "li-xiaodong",
+    "name": "李晓东",
+    "role": "faculty",
+    "title": "研究员，博士生导师",
+    "grade": "研究员",
+    "photo": "/images/lixiaodong.webp",
+    "affiliation": "中国科学院计算技术研究所 · 互联网基础技术实验室",
+    "researchArea": "互联网基础技术、网络空间安全、人工智能与数据治理",
+    "bio": "李晓东，博士，中国科学院计算技术研究所研究员、博士生导师，互联网基础技术实验室主任，兼任清华大学公共管理学院教授、清华大学互联网治理研究中心主任，伏羲智库创办人。曾任中国互联网络信息中心（CNNIC）主任、互联网名称与数字地址分配机构（ICANN）副总裁、互联网域名管理技术国家工程实验室主任。长期从事互联网基础技术、数据分析、网络安全与治理研究，曾负责国家域名全球服务平台规划建设与关键系统研制、中文域名标准化与“.中国”国家顶级域名入根、国家互联网大数据平台规划等工作；2014 年入选 IANA 职能移交协调工作组（ICG）全球 30 人工作组成员，2016 年参与推动完成全球互联网核心职能管理权移交。获国务院特殊津贴、中国青年五四奖章、中国软件行业十大杰出青年等荣誉，入选世界经济论坛全球青年领袖（YGL）。",
+    "email": "xl@ict.ac.cn",
+    "homepage": "https://www.ict.ac.cn/sourcedb/cn/jssrck/201902/t20190220_5242093.html",
+    "research_direction": ["dir6", "dir7", "dir8"],
+    "education": [
+      { "period": "1994 - 1998", "school": "山东大学计算机科学系", "degree": "本科 / 理学学士" },
+      { "period": "1998 - 2001", "school": "中国科学院计算机网络信息中心", "degree": "硕士" },
+      { "period": "2000 - 2004", "school": "中国科学院计算技术研究所", "degree": "博士（工学博士）" },
+      { "period": "2009 - 2010", "school": "清华大学经济管理学院", "degree": "EDP 高级管理培训" },
+      { "period": "2011 - 2012", "school": "北京大学光华管理学院", "degree": "EDP 高级管理培训" },
+      { "period": "2016", "school": "斯坦福大学商学院", "degree": "高级管理培训" }
+    ],
+    "experience": [
+      { "period": "2018 - 至今", "org": "中国科学院计算技术研究所", "position": "研究员" },
+      { "period": "2016 - 2018", "org": "中国互联网络信息中心（CNNIC）", "position": "主任（研究员三级，博士生导师）" },
+      { "period": "2014 - 2016", "org": "中国互联网络信息中心（CNNIC）", "position": "主任兼总工程师" },
+      { "period": "2013 - 2014", "org": "中国互联网络信息中心（CNNIC）", "position": "执行主任兼总工程师" },
+      { "period": "2011 - 2013", "org": "互联网名称与数字地址分配机构（ICANN）", "position": "副总裁" },
+      { "period": "2010 - 2011", "org": "中国互联网络信息中心（CNNIC）", "position": "副主任兼总工程师" },
+      { "period": "2007 - 2010", "org": "中国互联网络信息中心（CNNIC）", "position": "副主任兼总工程师（副研究员）" },
+      { "period": "2003 - 2007", "org": "中国互联网络信息中心（CNNIC）", "position": "先进服务研究组组长、技术部副主任/主任、技术总监（助理研究员）" }
+    ]
+  },
+  {
+    "id": "peng-botao",
+    "name": "彭博韬",
+    "role": "faculty",
+    "title": "副研究员",
+    "grade": "副研究员",
+    "affiliation": "中国科学院计算技术研究所 · 互联网基础技术实验室",
+    "researchArea": "高维数据与时间序列数据管理系统、数据互操作",
+    "photo": "/images/pengbotao.webp",
+    "externalDetail": true,
+    "bio": "彭博韬，博士，中国科学院计算技术研究所副研究员。2010—2014 年于华中科技大学获学士学位，2014—2016 年于巴黎萨克雷大学获硕士学位，2016—2020 年于巴黎大学（Université de Paris）获计算机博士学位，师从 Themis Palpanas 教授。2020 年回国加入中科院计算所网络技术研究中心，先后任特别研究助理、助理研究员，2024 年 10 月起任副研究员。研究方向为面向高维数据与时间序列数据的管理与分析系统设计与优化，以及跨领域数据交换（数据互操作）系统的研发。主持国家自然科学基金青年项目，获华为技术有限公司“火花奖”（2025）、中国互联网协会青年专家（2021）等荣誉。",
+    "email": "pengbotao@ict.ac.cn",
+    "homepage": "https://botaopeng.github.io/",
+    "research_direction": ["dir9", "dir8"],
+    "education": [
+      { "period": "2010 - 2014", "school": "华中科技大学 光学与电子信息学院", "degree": "本科" },
+      { "period": "2014 - 2016", "school": "巴黎萨克雷大学 信息学院", "degree": "硕士" },
+      { "period": "2016 - 2020", "school": "巴黎大学（Université de Paris）计算机学院", "degree": "博士" }
+    ],
+    "experience": [
+      { "period": "2024 - 至今", "org": "中国科学院计算技术研究所", "position": "副研究员" },
+      { "period": "2023 - 2024", "org": "中国科学院计算技术研究所", "position": "助理研究员" },
+      { "period": "2020 - 2023", "org": "中国科学院计算技术研究所", "position": "特别研究助理" }
+    ]
+  },
+  {
+    "id": "li-ying",
+    "name": "李颖",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2018级直博生",
+    "status": "graduated",
+    "graduationYear": 2024,
+    "photo": "/images/students/liying.webp",
+    "researchArea": "隐私保护与数据互操作",
+    "research_direction": ["dir7", "dir8"]
+  },
+  {
+    "id": "wei-jiuqi",
+    "name": "魏久麒",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2019级直博生",
+    "status": "graduated",
+    "graduationYear": 2025,
+    "photo": "/images/students/weijiuqi.webp",
+    "researchArea": "近似最近邻搜索与数据互操作",
+    "research_direction": ["dir9", "dir8"]
+  },
+  {
+    "id": "su-yue",
+    "name": "苏越",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2019级硕士生",
+    "status": "graduated",
+    "graduationYear": 2022,
+    "photo": "/images/students/suyue.webp",
+    "researchArea": "域名滥用检测与网络安全",
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "fu-yufan",
+    "name": "符玉梵",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2020级直博生",
+    "status": "graduated",
+    "graduationYear": 2026,
+    "photo": "/images/students/fuyufan.webp",
+    "researchArea": "DNS 安全与区块链",
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "zhang-youyi",
+    "name": "张有宜",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2020级硕士生",
+    "status": "graduated",
+    "graduationYear": 2023,
+    "photo": "/images/students/zhangyouyi.webp",
+    "researchArea": "数据互操作与数据架构",
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "zheng-hao",
+    "name": "郑浩",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2021级直博生",
+    "photo": "/images/students/zhenghao.webp",
+    "researchArea": "高维向量检索",
+    "research_direction": ["dir9"]
+  },
+  {
+    "id": "fei-ziyu",
+    "name": "费子郁",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2021级硕士生",
+    "status": "graduated",
+    "graduationYear": 2024,
+    "photo": "/images/students/feiziyu.webp",
+    "researchArea": "数据授权与访问控制",
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "zhang-aiyao",
+    "name": "张爱瑶",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2022级直博生",
+    "photo": "/images/students/zhangaiyao.webp",
+    "researchArea": "可信身份认证与授权",
+    "research_direction": ["dir8", "dir7"]
+  },
+  {
+    "id": "zhuang-zhixian",
+    "name": "庄智显",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2022级硕士生（2025年硕转博）",
+    "photo": "/images/students/zhuangzhixian.webp",
+    "researchArea": "跨境数据合规与策略建模",
+    "research_direction": ["dir8"]
+  },
+  {
+    "id": "han-ruoyu",
+    "name": "韩若宇",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2023级直博生",
+    "photo": "/images/students/hanruoyu.webp",
+    "researchArea": "DNS与可信域管理",
+    "research_direction": ["dir6"]
+  },
+  {
+    "id": "dai-zhaojun",
+    "name": "代兆君",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2023级硕士生",
+    "status": "graduated",
+    "graduationYear": 2026,
+    "photo": "/images/students/daizhaojun.webp",
+    "researchArea": "域名滥用检测与网络安全",
+    "research_direction": ["dir7"]
+  },
+  {
+    "id": "li-jingwen",
+    "name": "李婧文",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2024级硕士生",
+    "photo": "/images/students/lijingwen.webp",
+    "researchArea": "异构标识解析",
+    "research_direction": ["dir6"]
+  },
+  {
+    "id": "wang-yumeng",
+    "name": "王雨梦",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2024级硕士生",
+    "photo": "/images/students/wangyumeng.webp",
+    "researchArea": "向量检索",
+    "research_direction": ["dir9"]
+  },
+  {
+    "id": "qiao-yihao",
+    "name": "乔诣昊",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2025级硕士生",
+    "photo": "/images/students/qiaoyihao.webp",
+    "research_direction": []
+  },
+  {
+    "id": "wang-xuran",
+    "name": "王旭冉",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2026级直博生",
+    "research_direction": []
+  },
+  {
+    "id": "wang-he",
+    "name": "王赫",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2026级硕士生",
+    "research_direction": []
+  }
+]
