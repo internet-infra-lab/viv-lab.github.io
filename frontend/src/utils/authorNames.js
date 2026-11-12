@@ -4,8 +4,9 @@ import members from '../data/members.json'
  * 论文署名 ↔ 站内成员关联（唯一映射源）
  *
  * 说明：
- * - papers.json 中作者使用英文署名（如 `Jiuqi Wei`），members.json 使用中文姓名，
+ * - papers.json 中作者多为英文署名（如 `Jiuqi Wei`），members.json 使用中文姓名，
  *   二者此前无关联，导致成员主页看不到本人论文、论文页作者名无法跳转；
+ * - 中文期刊论文以中文姓名署名（如 `李颖`），因此映射同时收录中英文两种写法；
  * - 此处集中维护「英文署名 → 成员 id」，供论文详情页（作者跳转）、
  *   成员详情页与导师详情页（代表论文聚合）共用，避免多处各写一份；
  * - 同一成员存在署名变体时（如 `Xiaodong Lee` / `Xiaodong Li`），全部列入；
@@ -26,6 +27,11 @@ const SIGNATURE_TO_MEMBER = {
   'Aiyao Zhang': 'zhang-aiyao',
   'Zhixian Zhuang': 'zhuang-zhixian',
   'Zhaojun Dai': 'dai-zhaojun',
+  // 中文期刊论文的中文署名
+  李颖: 'li-ying',
+  李晓东: 'li-xiaodong',
+  费子郁: 'fei-ziyu',
+  彭博韬: 'peng-botao',
 }
 
 const MEMBER_BY_ID = Object.fromEntries(members.map((m) => [m.id, m]))

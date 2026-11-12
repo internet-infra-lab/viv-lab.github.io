@@ -56,7 +56,7 @@
     "keywords": ["数据互操作", "数据授权", "数据所有权", "访问控制", "跨境数据合规"],
     "methods": ["去中心化数据互操作", "可验证身份", "策略授权", "跨境数据合规建模", "数据所有权"],
     "highlights": [],
-    "featuredPapers": ["dia-compsac-2023", "dominate-data-wwwj-2025", "disauth-comnet-2024", "flexauth-trustcom-2023", "polaris-trustcom-2025", "cbcms-bigdata-2024", "structured-policy-ist-2026"]
+    "featuredPapers": ["auth-survey-bdr-2025", "dia-compsac-2023", "dominate-data-wwwj-2025", "disauth-comnet-2024", "flexauth-trustcom-2023", "polaris-trustcom-2025", "cbcms-bigdata-2024", "structured-policy-ist-2026"]
   },
   {
     "id": "dir9",

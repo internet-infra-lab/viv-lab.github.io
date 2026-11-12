@@ -97,6 +97,24 @@
     "featured": true
   },
   {
+    "id": "auth-survey-bdr-2025",
+    "title": "面向互联网数据互操作的授权技术综述",
+    "authors": [
+      { "name": "李颖", "corresponding": false },
+      { "name": "李晓东", "corresponding": true },
+      { "name": "费子郁", "corresponding": false },
+      { "name": "彭博韬", "corresponding": false }
+    ],
+    "venue": "大数据",
+    "year": 2025,
+    "type": "期刊",
+    "doi": "https://doi.org/10.11959/j.issn.2096-0271.2025008",
+    "abstract": "互联网数据互操作可实现数据跨域互联和交换，其中授权是保障数据权属和安全的关键技术之一。数据跨域流通的复杂性对授权技术提出了更高的可用和可信要求，亟须面向互联网数据互操作展开授权技术研究。首先，简述授权技术的基础概念和知识，分析互联网数据互操作对授权提出的技术要求；其次，从信任机制、权限模型、策略管理3个方面分析现有授权技术能力；最后，针对现有授权技术能力的不足，提出一些潜在的研究问题，旨在为后续研究提供思路和参考。",
+    "keywords": ["数据互操作", "跨域数据交换", "授权协议", "信任机制"],
+    "research_direction": ["dir8"],
+    "featured": false
+  },
+  {
     "id": "subspace-collision-sigmod-2025",
     "title": "Subspace Collision: An Efficient and Accurate Framework for High-dimensional Approximate Nearest Neighbor Search",
     "authors": [

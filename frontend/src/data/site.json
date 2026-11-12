@@ -11,7 +11,7 @@
   "stats": [
     { "label": "教师", "value": 2, "suffix": "人" },
     { "label": "在读研究生", "value": 11, "suffix": "人" },
-    { "label": "代表性论文", "value": 19, "suffix": "篇" },
+    { "label": "代表性论文", "value": 20, "suffix": "篇" },
     { "label": "研究方向", "value": 4, "suffix": "个" }
   ],
   "about": {
