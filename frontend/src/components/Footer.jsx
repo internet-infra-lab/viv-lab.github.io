@@ -84,7 +84,6 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <span>{t('footer.rights', { year })}</span>
-          <span className={styles.beian}>{t('footer.beian')}</span>
         </div>
       </div>
     </footer>

@@ -68,7 +68,6 @@ const zh = {
   'footer.contact': '联系方式',
   'footer.tagline': '面向智能互联网的数据互操作基础设施研究，聚焦数据互操作、互联网基础技术与数据安全可信治理。欢迎学术交流与合作。',
   'footer.rights': '© {year} 互联网基础技术实验室 · 中国科学院计算技术研究所',
-  'footer.beian': '京ICP备 00000000 号（示例）',
 
   'home.latest': '最新成果',
   'home.latestEn': 'Recent Publications',
@@ -260,7 +259,6 @@ const en = {
   'footer.contact': 'Contact',
   'footer.tagline': 'Research on data interoperation infrastructure for the intelligent internet, with a focus on data interoperation, internet fundamental technologies, and trustworthy data security and governance. Academic exchange and collaboration are welcome.',
   'footer.rights': '© {year} ICT Lab for Infrastructure · Institute of Computing Technology, CAS',
-  'footer.beian': 'ICP filing 00000000 (sample)',
 
   'home.latest': 'Recent Publications',
   'home.latestEn': 'Recent Publications',
