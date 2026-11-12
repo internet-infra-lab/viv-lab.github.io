@@ -224,5 +224,21 @@
     "title": "硕士生",
     "grade": "2026级硕士生",
     "research_direction": []
+  },
+  {
+    "id": "su-zhengxin",
+    "name": "苏政鑫",
+    "role": "phd",
+    "title": "博士生",
+    "grade": "2027级直博生",
+    "research_direction": []
+  },
+  {
+    "id": "shu-junxi",
+    "name": "舒俊喜",
+    "role": "master",
+    "title": "硕士生",
+    "grade": "2027级硕士生",
+    "research_direction": []
   }
 ]
