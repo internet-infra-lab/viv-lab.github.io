@@ -22,6 +22,7 @@ const CATEGORY_KEY = {
  */
 export default function NewsCard({ item, compact = false }) {
   const [imgFailed, setImgFailed] = useState(false)
+  const t = useT()
 
   if (compact) {
     return (
@@ -32,6 +33,8 @@ export default function NewsCard({ item, compact = false }) {
       </Link>
     )
   }
+
+  const categoryLabel = CATEGORY_KEY[item.category] ? t(CATEGORY_KEY[item.category]) : item.category
 
   return (
     <Card className={styles.card}>
