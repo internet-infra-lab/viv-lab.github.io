@@ -90,6 +90,8 @@
     "title": "互联网基础技术实验室论文发表于 IEEE TKDE",
     "date": "2026-06-01",
     "category": "科研成果",
+    "cover": "/images/news/news-pdet-lsh-tkde-2026.jpg",
+    "coverFit": "contain",
     "summary": "实验室论文《PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search With Quality Guarantees》发表于 IEEE Transactions on Knowledge and Data Engineering（TKDE）2026 年第 38 卷第 6 期。该方法基于动态编码树与多核并行实现内存级高维近似最近邻检索，在保持查询精度的同时，索引时间最高提速 40 倍、查询时间最高提速 62 倍。",
     "content": [
       {
