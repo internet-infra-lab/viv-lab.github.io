@@ -14,10 +14,15 @@
 # 说明：
 #   - 构建在 frontend/ 子目录进行（工作区根目录即仓库根目录，见 docs/deploy-github-pages.md）；
 #   - 构建产物自动生成 404.html（SPA 路由刷新兜底）与 .nojekyll，随产物一起发布；
-#   - base 路径（BASE_PATH）由仓库名动态推导，仓库内不写死任何 github.io 地址：
-#       · 普通仓库  <owner>/viv-lab          → 部署在 https://<owner>.github.io/viv-lab/
-#       · 用户站点  viv-lab/viv-lab.github.io → 部署在 https://viv-lab.github.io/（根路径）
-#     未来迁移到 viv.cn 二级域名时，将 BASE_PATH 固定为 "/" 即可（见部署文档）。
+#   - 站点已绑定自定义域名 https://internet-infra-lab.viv.cn/（Settings → Pages → Custom domain），
+#     自定义域名下站点位于域名**根路径**，因此构建 base 固定为 "/"（BASE_PATH）。
+#     若继续按仓库名推导（/<repo>/），首页 HTML 里的 JS/CSS 会指向
+#     https://internet-infra-lab.viv.cn/viv-lab.github.io/assets/... 而 404（白屏）。
+#   - 旧的 GitHub Pages 项目站点地址 https://internet-infra-lab.github.io/viv-lab.github.io/
+#     由 GitHub Pages 原生行为 301 重定向到自定义域名（路径与查询串原样保留：
+#     .../viv-lab.github.io/news/1 → https://internet-infra-lab.viv.cn/news/1），
+#     因此历史链接无需额外配置即可继续访问。
+#   - 若将来取消自定义域名、退回项目站点子路径，请把下方 BASE_PATH 改回 '/<仓库名>/'。
 
 name: Deploy to GitHub Pages
 
@@ -60,8 +65,9 @@ jobs:
       - name: Build
         working-directory: frontend
         env:
-          # 项目站点部署在 /<repo>/ 子路径；仓库名形如 <owner>.github.io 时部署在根路径 "/"
-          BASE_PATH: ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}/', github.event.repository.name) }}
+          # 自定义域名（https://internet-infra-lab.viv.cn/）下站点位于根路径，base 固定 "/"。
+          # 不要改回按仓库名推导的 '/viv-lab.github.io/'：那会让新域名下的 assets 404。
+          BASE_PATH: /
         run: npm run build
 
       - name: Prepare static site (SPA fallback + nojekyll)
@@ -72,6 +78,8 @@ jobs:
           cp dist/index.html dist/404.html
           # 跳过 Jekyll 处理，保证静态资源原样发布
           touch dist/.nojekyll
+          # 说明：自定义域名不写入 CNAME 文件——以 GitHub Actions 为发布源时，
+          # 域名只来自仓库 Settings → Pages → Custom domain（CNAME 文件会被忽略）。
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

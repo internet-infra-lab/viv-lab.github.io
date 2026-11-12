@@ -48,9 +48,18 @@ npm run build      # 产物输出到 frontend/dist
 ```
 
 > 构建时的部署子路径通过环境变量 `BASE_PATH` 注入（默认 `/`，即本地开发与根路径部署）。
-> 部署到 GitHub Pages 时由 CI 工作流根据仓库名自动推导，代码内不写死任何 github.io 地址。
+> 线上站点通过自定义域名 **https://internet-infra-lab.viv.cn/** 的根路径提供服务，
+> CI 工作流固定注入 `BASE_PATH=/`。
+
+## 访问地址
+
+| 地址 | 说明 |
+| --- | --- |
+| **https://internet-infra-lab.viv.cn/** | 正式长期访问地址（自定义域名，canonical） |
+| https://internet-infra-lab.github.io/viv-lab.github.io/ | 旧 GitHub Pages 地址，由 GitHub Pages **301 重定向**到新域名（路径与查询串原样保留，历史链接继续可用） |
 
 ## 部署
 
 一键自动部署到 GitHub Pages，详见 [docs/deploy-github-pages.md](docs/deploy-github-pages.md)：
-push 代码后由 GitHub Actions 自动构建并发布，无需手动上传构建产物；后续迁移到 viv.cn 二级域名时仅需调整部署环境变量。
+push 代码后由 GitHub Actions 自动构建并发布，无需手动上传构建产物；构建 base 固定为 `/`，
+自定义域名保存在仓库 Settings → Pages → Custom domain（以 Actions 为发布源时 CNAME 文件会被忽略），重新部署不会清除。
