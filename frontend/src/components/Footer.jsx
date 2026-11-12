@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom'
 import Icon from './Icon'
 import site from '../data/site.json'
+import { useLang, useT } from '../i18n/LangContext'
 import styles from './Footer.module.css'
 
 export default function Footer() {
+  const t = useT()
+  const { lang } = useLang()
   const year = new Date().getFullYear()
   const quickLinks = [
-    { label: '招生招聘', path: '/join-us' },
-    { label: '学术论文', path: '/publications' },
-    { label: '新闻动态', path: '/news' },
-    { label: '研究内容', path: '/research' },
+    { label: t('nav.joinUs'), path: '/join-us' },
+    { label: t('nav.publications'), path: '/publications' },
+    { label: t('nav.news'), path: '/news' },
+    { label: t('nav.research'), path: '/research' },
   ]
 
   return (
@@ -17,15 +20,17 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={styles.brandCol}>
-            <p className={styles.brandName}>{site.lab.nameZh}</p>
-            <p className={styles.brandEn}>{site.lab.nameEn}</p>
-            <p className={styles.brandDesc}>
-              面向智能互联网的数据互操作基础设施研究，聚焦数据互操作、互联网基础技术与数据安全可信治理。欢迎学术交流与合作。
+            <p className={styles.brandName}>
+              {lang === 'en' ? site.lab.nameEn : site.lab.nameZh}
             </p>
+            <p className={styles.brandEn}>
+              {lang === 'en' ? site.lab.nameZh : site.lab.nameEn}
+            </p>
+            <p className={styles.brandDesc}>{t('footer.tagline')}</p>
           </div>
 
           <div className={styles.col}>
-            <h3 className={styles.colTitle}>快捷链接</h3>
+            <h3 className={styles.colTitle}>{t('footer.quickLinks')}</h3>
             <ul className={styles.links}>
               {quickLinks.map((l) => (
                 <li key={l.path}>
@@ -38,7 +43,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.col}>
-            <h3 className={styles.colTitle}>友情链接</h3>
+            <h3 className={styles.colTitle}>{t('footer.friends')}</h3>
             <ul className={styles.links}>
               {site.friendLinks.map((l) => (
                 <li key={l.url}>
@@ -57,7 +62,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.col}>
-            <h3 className={styles.colTitle}>联系方式</h3>
+            <h3 className={styles.colTitle}>{t('footer.contact')}</h3>
             <ul className={styles.links}>
               <li className={styles.contactItem}>
                 <Icon name="mail" size={16} className={styles.contactIcon} />
@@ -78,10 +83,8 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <span>
-            © {year} {site.lab.nameZh} · {site.lab.university}
-          </span>
-          <span className={styles.beian}>京ICP备 00000000 号（示例）</span>
+          <span>{t('footer.rights', { year })}</span>
+          <span className={styles.beian}>{t('footer.beian')}</span>
         </div>
       </div>
     </footer>

@@ -9,6 +9,21 @@ import site from '../data/site.json'
  * 同时作为各内页 Page Header 章节编号（01/02/…）的基准，
  * 保证导航顺序与页面章节编号一致。
  */
+/** 导航项 → i18n 文案 key（界面文案随语言切换，路径不变） */
+const NAV_LABEL_KEY = {
+  '/': 'nav.home',
+  '/about': 'nav.about',
+  '/team': 'nav.team',
+  '/research': 'nav.research',
+  '/publications': 'nav.publications',
+  '/news': 'nav.news',
+  '/join-us': 'nav.joinUs',
+}
+
 export const NAV_ITEMS = site.nav
   .filter((item) => item.path !== '/projects')
-  .map((item) => (item.path === '/research' ? { ...item, label: '研究内容' } : item))
+  .map((item) => ({
+    ...item,
+    label: item.path === '/research' ? '研究内容' : item.label,
+    labelKey: NAV_LABEL_KEY[item.path],
+  }))

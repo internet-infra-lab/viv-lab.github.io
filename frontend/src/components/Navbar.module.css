@@ -138,6 +138,23 @@
   margin-right: var(--space-8);
 }
 
+.langItem {
+  border: none;
+  background: transparent;
+  padding: 4px 6px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 1;
+  color: var(--color-text-muted);
+  transition: color 0.15s ease-out, background 0.15s ease-out;
+}
+
+.langItem:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
 .langActive {
   color: var(--color-primary);
   font-weight: 600;
@@ -173,27 +190,42 @@
 
 .searchForm {
   position: absolute;
-  right: 44px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 120;
   display: flex;
   align-items: center;
+  width: min(320px, calc(100vw - 24px));
   background: var(--color-bg-page);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-pop);
   overflow: hidden;
-  animation: searchIn 0.2s ease-out;
+  animation: searchDrop 0.18s ease-out;
 }
 
-@keyframes searchIn {
+/* 展开面板的小尖角，视觉上指向搜索图标 */
+.searchForm::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg-page);
+  border-left: 1px solid var(--color-border-strong);
+  border-top: 1px solid var(--color-border-strong);
+  transform: rotate(45deg);
+}
+
+@keyframes searchDrop {
   from {
     opacity: 0;
-    transform: translateY(-50%) translateX(6px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(-50%) translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -204,7 +236,8 @@
   font-size: 14px;
   font-family: inherit;
   color: var(--color-text-primary);
-  width: 220px;
+  flex: 1;
+  min-width: 0;
   background: transparent;
 }
 
@@ -255,9 +288,6 @@
     background: var(--color-primary-tint);
   }
   .drawer .navLinkActive::after {
-    display: none;
-  }
-  .langSwitch {
     display: none;
   }
 }

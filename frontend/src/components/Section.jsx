@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from './Icon'
+import { useT } from '../i18n/LangContext'
 import styles from './Section.module.css'
 
 /**
@@ -16,6 +17,7 @@ export default function Section({
   children,
   className = '',
 }) {
+  const t = useT()
   return (
     <section id={id} className={`${styles.section} ${className}`}>
       <div className={styles.header}>
@@ -27,7 +29,7 @@ export default function Section({
         {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         {actionTo && (
           <Link to={actionTo} className={styles.action}>
-            {actionLabel || '查看全部'}
+            {actionLabel || t('common.viewAll')}
             <Icon name="arrowRight" size={16} />
           </Link>
         )}

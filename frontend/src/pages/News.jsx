@@ -7,7 +7,16 @@ import Tag from '../components/Tag'
 import Icon from '../components/Icon'
 import assetUrl from '../utils/asset'
 import news from '../data/news.json'
+import { useT } from '../i18n/LangContext'
 import styles from './News.module.css'
+
+/** 新闻分类（数据值为中文）→ i18n key */
+const CATEGORY_KEY = {
+  科研成果: 'news.cat.research',
+  人才培养: 'news.cat.talent',
+  合作交流: 'news.cat.cooperation',
+  学术交流: 'news.cat.academic',
+}
 
 const PAGE_SIZE = 10
 
@@ -18,7 +27,10 @@ function buildCategories() {
 }
 
 export default function News() {
+  const t = useT()
   const [category, setCategory] = useState('全部')
+  const categoryLabel = (value) =>
+    value === '全部' ? t('common.all') : CATEGORY_KEY[value] ? t(CATEGORY_KEY[value]) : value
   const [page, setPage] = useState(1)
 
   const CATEGORIES = useMemo(buildCategories, [])
@@ -41,15 +53,11 @@ export default function News() {
 
   return (
     <>
-      <PageHeader
-        title="新闻动态"
-        en="News"
-        desc="实验室最新动态、学术活动、获奖荣誉与媒体报道。"
-      />
+      <PageHeader title={t('news.title')} en="News" desc={t('news.desc')} />
 
       <div className="container section-pad">
         {/* ---- 分类页签 ---- */}
-        <div className={styles.tabs} role="tablist" aria-label="新闻分类">
+        <div className={styles.tabs} role="tablist" aria-label={t('news.tabs')}>
           {CATEGORIES.map((c) => (
             <button
               key={c}
@@ -59,13 +67,13 @@ export default function News() {
               className={`${styles.tab} ${category === c ? styles.tabActive : ''}`}
               onClick={() => switchCategory(c)}
             >
-              {c}
+              {categoryLabel(c)}
             </button>
           ))}
         </div>
 
         {filtered.length === 0 ? (
-          <p className={styles.empty}>该分类暂无内容</p>
+          <p className={styles.empty}>{t('news.empty')}</p>
         ) : (
           <>
             {/* ---- 首条大版式 ---- */}
@@ -87,13 +95,13 @@ export default function News() {
                 </div>
                 <div className={styles.featuredBody}>
                   <div className={styles.featuredMeta}>
-                    <Tag variant="primary">{featured.category}</Tag>
+                    <Tag variant="primary">{categoryLabel(featured.category)}</Tag>
                     <span className={styles.featuredDate}>{featured.date}</span>
                   </div>
                   <h2 className={styles.featuredTitle}>{featured.title}</h2>
                   <p className={styles.featuredSummary}>{featured.summary}</p>
                   <span className={styles.featuredMore}>
-                    阅读全文
+                    {t('common.readMore')}
                     <Icon name="arrowRight" size={16} />
                   </span>
                 </div>

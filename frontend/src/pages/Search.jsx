@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader'
 import EmptyState from '../components/EmptyState'
 import Icon from '../components/Icon'
 import { HOT_KEYWORDS, SEARCH_GROUPS, searchAll } from '../utils/search'
+import { useT } from '../i18n/LangContext'
 import styles from './Search.module.css'
 
 const ALL = 'all'
@@ -82,6 +83,9 @@ function ResultItem({ item, tokens }) {
 }
 
 export default function Search() {
+  const t = useT()
+  const groupLabel = (type) => t(`search.group.${type}`)
+  const groupUnit = (type) => t(`search.unit.${type}`)
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('q') || ''
   const activeType = searchParams.get('type') || ALL
@@ -124,11 +128,7 @@ export default function Search() {
 
   return (
     <>
-      <PageHeader
-        title="站内搜索"
-        en="Search"
-        desc="一次检索全站的学术成果、新闻动态、团队成员与研究方向，结果按类别分组展示。"
-      />
+      <PageHeader title={t('search.title')} en="Search" desc={t('search.headerDesc')} />
 
       <div className="container section-pad">
         <form className={styles.searchForm} onSubmit={submit} role="search">
@@ -139,11 +139,11 @@ export default function Search() {
             type="search"
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
-            placeholder="搜索论文、作者、新闻、成员、研究方向，多个关键词用空格分隔"
-            aria-label="全站搜索"
+            placeholder={t('search.placeholder')}
+            aria-label={t('search.aria')}
           />
           <button type="submit" className={styles.searchBtn}>
-            搜索
+            {t('search.button')}
           </button>
         </form>
 
@@ -151,7 +151,7 @@ export default function Search() {
         {!query.trim() && (
           <div className={styles.placeholder}>
             <div className={styles.hotBlock}>
-              <h2 className={styles.hotTitle}>热门关键词</h2>
+              <h2 className={styles.hotTitle}>{t('search.hot')}</h2>
               <div className={styles.hotTags}>
                 {HOT_KEYWORDS.map((keyword) => (
                   <button
@@ -166,20 +166,18 @@ export default function Search() {
               </div>
             </div>
             <div className={styles.scopeBlock}>
-              <h2 className={styles.hotTitle}>可检索范围</h2>
+              <h2 className={styles.hotTitle}>{t('search.scope')}</h2>
               <ul className={styles.scopeList}>
                 {SEARCH_GROUPS.map((group) => (
                   <li key={group.type} className={styles.scopeItem}>
                     <span className={styles.scopeIcon}>
                       <Icon name={group.icon} size={18} />
                     </span>
-                    {group.label}
+                    {groupLabel(group.type)}
                   </li>
                 ))}
               </ul>
-              <p className={styles.hotHint}>
-                检索支持中文与英文关键词；多个关键词需同时命中，例如「数据互操作 授权」会比单个词更精确。
-              </p>
+              <p className={styles.hotHint}>{t('search.hint')}</p>
             </div>
           </div>
         )}
@@ -189,10 +187,10 @@ export default function Search() {
           <>
             <div className={styles.summaryRow}>
               <p className={styles.summary}>
-                找到 <strong>{total}</strong> 条与「{query.trim()}」相关的内容
+                {t('search.summary', { n: total, q: query.trim() })}
               </p>
               {total > 0 && (
-                <div className={styles.tabs} role="tablist" aria-label="结果分类">
+                <div className={styles.tabs} role="tablist" aria-label={t('search.tabs')}>
                   <button
                     type="button"
                     role="tab"
@@ -200,7 +198,7 @@ export default function Search() {
                     className={`${styles.tab} ${activeType === ALL ? styles.tabActive : ''}`}
                     onClick={() => switchType(ALL)}
                   >
-                    全部
+                    {t('common.all')}
                     <span className={styles.tabCount}>{total}</span>
                   </button>
                   {SEARCH_GROUPS.map((group) => {
@@ -218,7 +216,7 @@ export default function Search() {
                         onClick={() => switchType(group.type)}
                       >
                         <Icon name={group.icon} size={14} />
-                        {group.label}
+                        {groupLabel(group.type)}
                         <span className={styles.tabCount}>{count}</span>
                       </button>
                     )
@@ -229,8 +227,8 @@ export default function Search() {
 
             {total === 0 && (
               <EmptyState
-                title={`没有找到与「${query.trim()}」相关的内容`}
-                desc="试试更换关键词、减少限定词，或点击下方热门关键词。"
+                title={t('search.emptyTitle', { q: query.trim() })}
+                desc={t('search.emptyDesc')}
               />
             )}
 
@@ -254,15 +252,15 @@ export default function Search() {
               const shown = expanded ? group.items : group.items.slice(0, PREVIEW_LIMIT)
               const rest = group.items.length - shown.length
               return (
-                <section key={group.type} className={styles.group} aria-label={group.label}>
+                <section key={group.type} className={styles.group} aria-label={groupLabel(group.type)}>
                   <div className={styles.groupHead}>
                     <h2 className={styles.groupTitle}>
                       <span className={styles.groupIcon}>
                         <Icon name={group.icon} size={16} />
                       </span>
-                      {group.label}
+                      {groupLabel(group.type)}
                       <span className={styles.groupCount}>
-                        {group.items.length} {group.unit}
+                        {group.items.length} {groupUnit(group.type)}
                       </span>
                     </h2>
                     {rest > 0 && (
@@ -271,7 +269,7 @@ export default function Search() {
                         className={styles.moreBtn}
                         onClick={() => switchType(group.type)}
                       >
-                        查看全部 {group.items.length} {group.unit}
+                        {t('search.viewAll', { n: group.items.length, unit: groupUnit(group.type) })}
                         <Icon name="arrowRight" size={14} />
                       </button>
                     )}

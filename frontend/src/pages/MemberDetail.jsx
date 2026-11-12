@@ -4,6 +4,7 @@ import PublicationCard from '../components/PublicationCard'
 import Tag from '../components/Tag'
 import assetUrl from '../utils/asset'
 import { papersOfMember } from '../utils/authorNames'
+import { useT } from '../i18n/LangContext'
 import members from '../data/members.json'
 import directions from '../data/directions.json'
 import papers from '../data/papers.json'
@@ -11,6 +12,7 @@ import NotFound from './NotFound'
 import styles from './detail.module.css'
 
 export default function MemberDetail() {
+  const t = useT()
   const { id } = useParams()
   const member = members.find((m) => m.id === id)
 
@@ -23,10 +25,10 @@ export default function MemberDetail() {
   return (
     <div className="container section-pad">
       {/* 面包屑 */}
-      <nav className={styles.breadcrumb} aria-label="面包屑">
-        <Link to="/">首页</Link>
+      <nav className={styles.breadcrumb} aria-label={t('breadcrumb.label')}>
+        <Link to="/">{t('breadcrumb.home')}</Link>
         <span aria-hidden="true">›</span>
-        <Link to="/team">团队成员</Link>
+        <Link to="/team">{t('breadcrumb.team')}</Link>
         <span aria-hidden="true">›</span>
         <span aria-current="page">{member.name}</span>
       </nav>
@@ -65,14 +67,14 @@ export default function MemberDetail() {
 
       {member.bio && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>个人简介</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.bio')}</h2>
           <p className={`${styles.paragraph} prose`}>{member.bio}</p>
         </section>
       )}
 
       {member.education && member.education.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>教育经历</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.education')}</h2>
           <ol className={styles.eduList}>
             {member.education.map((e) => (
               <li key={`${e.school}-${e.degree}`} className={styles.eduItem}>
@@ -88,7 +90,7 @@ export default function MemberDetail() {
       {/* ---- 代表论文（按论文数据中署名为本人的记录聚合，复用论文条目组件） ---- */}
       {memberPapers.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>代表论文</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.papers')}</h2>
           <div className={styles.paperList}>
             {memberPapers.map((p) => (
               <PublicationCard key={p.id} paper={p} />

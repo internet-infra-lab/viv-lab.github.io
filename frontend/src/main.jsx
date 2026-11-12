@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+import { LangProvider } from './i18n/LangContext'
 import './styles/global.css'
 
 // 与 Vite base 保持一致：部署在子路径（如 GitHub Pages 的 /<repo>/）时，
@@ -12,7 +13,9 @@ const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={basename}>
-      <App />
+      <LangProvider>
+        <App />
+      </LangProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

@@ -9,6 +9,7 @@ import site from '../data/site.json'
 import papers from '../data/papers.json'
 import news from '../data/news.json'
 import { RESEARCH_DIRECTIONS } from '../config/researchDirections'
+import { useLang, useT } from '../i18n/LangContext'
 import styles from './Home.module.css'
 
 /**
@@ -19,8 +20,11 @@ import styles from './Home.module.css'
  */
 const HERO = {
   tagline: '面向智能互联网的数据互操作基础设施',
+  taglineEn: 'Data interoperation infrastructure for the intelligent internet',
   subtitle:
     '聚焦数据互操作、互联网基础技术与数据安全可信治理，构建安全、可信、高效的数据流通基础设施，支撑智能互联网时代的跨域数据共享与可信流转。',
+  subtitleEn:
+    'Focused on data interoperation, internet fundamental technologies and trustworthy data security and governance, we build a secure, trusted and efficient data circulation infrastructure that supports cross-domain data sharing and trustworthy flow in the intelligent internet era.',
 }
 
 /** 首页代表成果策展顺序（置顶为核心代表作「Dominate Data by Yourself」） */
@@ -38,6 +42,8 @@ const PLATFORM = {
 }
 
 export default function Home() {
+  const t = useT()
+  const { lang } = useLang()
   const latestPapers = HOMEPAGE_PAPERS.map((id) =>
     papers.find((p) => p.id === id),
   ).filter(Boolean)
@@ -139,23 +145,23 @@ export default function Home() {
               <span className={styles.heroOverlineBar} />
               {site.lab.university}
             </p>
-            <h1 className={styles.heroTitle}>{HERO.tagline}</h1>
-            <p className={styles.heroSub}>{HERO.subtitle}</p>
+            <h1 className={styles.heroTitle}>{lang === 'en' ? HERO.taglineEn : HERO.tagline}</h1>
+            <p className={styles.heroSub}>{lang === 'en' ? HERO.subtitleEn : HERO.subtitle}</p>
             <div className={styles.heroCtas}>
               <Link to="/research" className={styles.btnPrimary}>
-                了解研究方向
+                {t('home.exploreDirections')}
                 <Icon name="arrowRight" size={18} />
               </Link>
               <Link to="/join-us" className={styles.btnGhost}>
-                加入我们
+                {t('home.joinUs')}
               </Link>
             </div>
-            <ul className={styles.heroChips} aria-label="重点研究方向快捷入口">
+            <ul className={styles.heroChips} aria-label={t('research.directions')}>
               {featuredDirections.map((d) => (
                 <li key={d.id}>
                   <Link to={`/research/${d.id}`} className={styles.heroChip}>
                     <Icon name={d.icon} size={15} />
-                    {d.title}
+                    {lang === 'en' ? d.enShort || d.en : d.title}
                   </Link>
                 </li>
               ))}
@@ -171,11 +177,15 @@ export default function Home() {
       {/* ---- 01 研究方向（正式展开研究主线） ---- */}
       <section className={styles.sectionBlock}>
         <Section
-          title="研究方向"
+          title={t('research.directions')}
           en="Research Directions"
           index="01"
-          subtitle="围绕「面向智能互联网的数据互操作基础设施」构建的四个核心方向"
-          actionLabel="查看全部"
+          subtitle={
+            lang === 'en'
+              ? 'Four core directions built around data interoperation infrastructure for the intelligent internet'
+              : '围绕「面向智能互联网的数据互操作基础设施」构建的四个核心方向'
+          }
+          actionLabel={t('common.viewAll')}
           actionTo="/research"
         >
           <div className={styles.directionGrid}>
@@ -187,10 +197,12 @@ export default function Home() {
                 <span className={styles.directionIcon}>
                   <Icon name={d.icon} size={24} />
                 </span>
-                <h3 className={styles.directionTitle}>{d.title}</h3>
-                <p className={styles.directionSummary}>{d.summary}</p>
+                <h3 className={styles.directionTitle}>{lang === 'en' ? d.en : d.title}</h3>
+                <p className={styles.directionSummary}>
+                  {lang === 'en' ? d.enShort || d.en : d.summary}
+                </p>
                 <span className={styles.directionMore}>
-                  了解详情
+                  {lang === 'en' ? 'Details' : '了解详情'}
                   <Icon name="arrowRight" size={14} />
                 </span>
               </Link>
@@ -204,10 +216,10 @@ export default function Home() {
         <div className={styles.split}>
           <div className={styles.splitMain}>
             <Section
-              title="最新成果"
+              title={t('home.latest')}
               en="Recent Publications"
               index="02"
-              actionLabel="查看全部论文"
+              actionLabel={t('home.viewAllPapers')}
               actionTo="/publications"
             >
               {latestPapers[0] && (
@@ -217,7 +229,7 @@ export default function Home() {
                     className={styles.paperFeaturedMain}
                   >
                     <div className={styles.paperFeaturedMeta}>
-                      <span className={styles.paperFeaturedBadge}>代表成果</span>
+                      <span className={styles.paperFeaturedBadge}>{t('home.featured')}</span>
                       <span className={styles.paperFeaturedYear}>{latestPapers[0].year}</span>
                       <span className={styles.paperFeaturedVenue}>{latestPapers[0].venue}</span>
                     </div>
@@ -252,10 +264,10 @@ export default function Home() {
 
           <div className={styles.splitSide}>
             <Section
-              title="新闻动态"
+              title={t('home.news')}
               en="News"
               index="03"
-              actionLabel="查看全部动态"
+              actionLabel={t('home.viewAllNews')}
               actionTo="/news"
             >
               {latestNews.length > 0 ? (
@@ -289,7 +301,7 @@ export default function Home() {
 
       {/* ---- 04 平台实践（平台展示卡片：左侧介绍 + 右侧浏览器窗口截图预览） ---- */}
       <section className={styles.sectionBlock}>
-        <Section title="平台实践" en="Platform Practice" index="04">
+        <Section title={t('home.platform')} en="Platform Practice" index="04">
           <div className={styles.platformCard}>
             {/* 左侧：平台介绍 */}
             <div className={styles.platformInfo}>

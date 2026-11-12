@@ -4,6 +4,7 @@ import Icon from '../components/Icon'
 import PublicationCard from '../components/PublicationCard'
 import assetUrl from '../utils/asset'
 import { papersOfMember } from '../utils/authorNames'
+import { useT } from '../i18n/LangContext'
 import members from '../data/members.json'
 import directions from '../data/directions.json'
 import papers from '../data/papers.json'
@@ -22,6 +23,7 @@ import styles from './FacultyDetail.module.css'
 const REPRESENTATIVE_LIMIT = 10
 
 export default function FacultyDetail() {
+  const t = useT()
   const { id } = useParams()
   const member = members.find((m) => m.id === id)
   const external = !!member && member.externalDetail && !!member.homepage
@@ -64,10 +66,10 @@ export default function FacultyDetail() {
   return (
     <div className="container section-pad">
       {/* 面包屑（C-09） */}
-      <nav className={shared.breadcrumb} aria-label="面包屑">
-        <Link to="/">首页</Link>
+      <nav className={shared.breadcrumb} aria-label={t('breadcrumb.label')}>
+        <Link to="/">{t('breadcrumb.home')}</Link>
         <span aria-hidden="true">›</span>
-        <Link to="/team">团队成员</Link>
+        <Link to="/team">{t('breadcrumb.team')}</Link>
         <span aria-hidden="true">›</span>
         <span aria-current="page">{member.name}</span>
       </nav>
@@ -124,7 +126,7 @@ export default function FacultyDetail() {
       {/* ---- 研究方向 ---- */}
       {dirs.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>研究方向</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.directions')}</h2>
           <div className={styles.dirGrid}>
             {dirs.map((d) => (
               <Link key={d.id} to={`/research/${d.id}`} className={styles.dirCard}>
@@ -146,7 +148,7 @@ export default function FacultyDetail() {
       {/* ---- 个人简介 ---- */}
       {member.bio && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>个人简介</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.bio')}</h2>
           <p className={`${shared.paragraph} prose`}>{member.bio}</p>
         </section>
       )}
@@ -154,7 +156,7 @@ export default function FacultyDetail() {
       {/* ---- 教育经历 ---- */}
       {member.education && member.education.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>教育经历</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.education')}</h2>
           <ol className={styles.timeline}>
             {member.education.map((e, i) => (
               <li key={`${e.school}-${i}`} className={styles.timelineItem}>
@@ -172,7 +174,7 @@ export default function FacultyDetail() {
       {/* ---- 工作履历 ---- */}
       {member.experience && member.experience.length > 0 && (
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>工作履历</h2>
+          <h2 className={styles.sectionTitle}>{t('detail.experience')}</h2>
           <ol className={styles.timeline}>
             {member.experience.map((e, i) => (
               <li key={`${e.org}-${i}`} className={styles.timelineItem}>
@@ -191,9 +193,9 @@ export default function FacultyDetail() {
       {representatives.length > 0 && (
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>代表论文</h2>
+            <h2 className={styles.sectionTitle}>{t('detail.papers')}</h2>
             <Link to="/publications" className={styles.moreLink}>
-              查看全部论文
+              {t('home.viewAllPapers')}
               <Icon name="arrowRight" size={14} />
             </Link>
           </div>
@@ -208,7 +210,7 @@ export default function FacultyDetail() {
       {/* ---- 招生信息 ---- */}
       <section className={styles.recruit}>
         <div className={styles.recruitBody}>
-          <h2 className={styles.recruitTitle}>招生信息</h2>
+          <h2 className={styles.recruitTitle}>{t('detail.recruit')}</h2>
           <p className={styles.recruitDesc}>
             本实验室长期招收博士研究生、硕士研究生与博士后研究人员，欢迎对
             {member.researchArea ? `「${member.researchArea}」` : '实验室相关方向'}

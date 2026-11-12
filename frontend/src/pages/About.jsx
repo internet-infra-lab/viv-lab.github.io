@@ -6,6 +6,7 @@ import Icon from '../components/Icon'
 import assetUrl from '../utils/asset'
 import site from '../data/site.json'
 import { LAB_STATS } from '../utils/stats'
+import { useT } from '../i18n/LangContext'
 import styles from './About.module.css'
 
 /**
@@ -21,17 +22,14 @@ export default function About() {
       .replace(/研究人员 \d+ 人/g, `研究人员 ${LAB_STATS.facultyCount} 人`),
   )
 
+  const t = useT()
   return (
     <>
-      <PageHeader
-        title="实验室介绍"
-        en="About the Lab"
-        desc="面向互联网基础资源与数据互操作技术的研究团队。"
-      />
+      <PageHeader title={t('about.title')} en="About the Lab" desc={t('about.desc')} />
 
       <div className="container section-pad">
         {/* ---- 概况（单栏宽正文） ---- */}
-        <Section title="实验室概况" en="Overview">
+        <Section title={t('about.overview')} en="Overview">
           <div className={styles.overview}>
             {site.about.lead && <p className={styles.lead}>{site.about.lead}</p>}
             {paragraphs.map((p, i) => (
@@ -43,7 +41,7 @@ export default function About() {
         </Section>
 
         {/* ---- 发展历程 ---- */}
-        <Section title="发展历程" en="Milestones">
+        <Section title={t('about.milestones')} en="Milestones">
           <ol className={styles.timeline}>
             {site.milestones.map((m, i) => (
               <li key={i} className={styles.timelineItem}>
@@ -75,7 +73,7 @@ export default function About() {
         </Section>
 
         {/* ---- 平台与设备 ---- */}
-        <Section title="平台与设备" en="Platforms & Facilities">
+        <Section title={t('about.platforms')} en="Platforms & Facilities">
           <div className={styles.equipmentGrid}>
             {site.about.equipment.map((e) => (
               <Card key={e.name} className={styles.equipmentCard}>
@@ -87,7 +85,7 @@ export default function About() {
         </Section>
 
         {/* ---- 荣誉与资质 ---- */}
-        <Section title="荣誉与资质" en="Honors">
+        <Section title={t('about.honors')} en="Honors">
           <ul className={styles.honors}>
             {site.honors.map((h) => (
               <li key={h.title} className={styles.honorItem}>
@@ -107,7 +105,7 @@ export default function About() {
             实验室概况与 {LAB_STATS.directionCount} 个核心研究方向共同构成实验室的科研介绍体系
           </span>
           <Link to="/research" className={styles.researchLinkBtn}>
-            进入研究方向
+            {t('about.enterResearch')}
             <Icon name="arrowRight" size={16} />
           </Link>
         </div>

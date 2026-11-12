@@ -4,6 +4,7 @@ import Icon from '../components/Icon'
 import Tag from '../components/Tag'
 import papers from '../data/papers.json'
 import { memberBySignature, memberPath } from '../utils/authorNames'
+import { useT } from '../i18n/LangContext'
 import NotFound from './NotFound'
 import styles from './detail.module.css'
 
@@ -19,6 +20,7 @@ function buildCitation(p) {
 }
 
 export default function PublicationDetail() {
+  const t = useT()
   const { id } = useParams()
   const paper = papers.find((p) => p.id === id)
   const [copied, setCopied] = useState(false)
@@ -45,12 +47,12 @@ export default function PublicationDetail() {
 
   return (
     <div className="container section-pad">
-      <nav className={styles.breadcrumb} aria-label="面包屑">
-        <Link to="/">首页</Link>
+      <nav className={styles.breadcrumb} aria-label={t('breadcrumb.label')}>
+        <Link to="/">{t('breadcrumb.home')}</Link>
         <span aria-hidden="true">›</span>
-        <Link to="/publications">学术论文</Link>
+        <Link to="/publications">{t('breadcrumb.publications')}</Link>
         <span aria-hidden="true">›</span>
-        <span aria-current="page">论文详情</span>
+        <span aria-current="page">{t('breadcrumb.paperDetail')}</span>
       </nav>
 
       <article>
@@ -82,14 +84,14 @@ export default function PublicationDetail() {
 
         {paper.abstract && (
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>摘要</h2>
+            <h2 className={styles.sectionTitle}>{t('pub.abstract')}</h2>
             <p className={`${styles.paragraph} prose`}>{paper.abstract}</p>
           </section>
         )}
 
         {paper.keywords && paper.keywords.length > 0 && (
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>关键词</h2>
+            <h2 className={styles.sectionTitle}>{t('pub.keywords')}</h2>
             <div className={styles.tags}>
               {paper.keywords.map((k) => (
                 <Tag key={k} variant="primary">
@@ -101,7 +103,7 @@ export default function PublicationDetail() {
         )}
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>引用信息</h2>
+          <h2 className={styles.sectionTitle}>{t('pub.citation')}</h2>
           <div className={styles.citeBox}>
             <p className={styles.citeText}>{citation}</p>
             <button
@@ -111,7 +113,7 @@ export default function PublicationDetail() {
               aria-live="polite"
             >
               <Icon name={copied ? 'check' : 'copy'} size={16} />
-              {copied ? '已复制' : '复制引用'}
+              {copied ? t('common.copied') : t('common.copyCitation')}
             </button>
           </div>
         </section>
@@ -123,7 +125,7 @@ export default function PublicationDetail() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            查看原文 / DOI
+            {t('common.viewOriginal')}
             <Icon name="external" size={16} />
           </a>
         )}

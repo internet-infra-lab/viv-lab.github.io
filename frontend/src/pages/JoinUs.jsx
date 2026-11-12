@@ -5,6 +5,7 @@ import Section from '../components/Section'
 import Icon from '../components/Icon'
 import Tag from '../components/Tag'
 import site from '../data/site.json'
+import { useLang, useT } from '../i18n/LangContext'
 import styles from './JoinUs.module.css'
 
 /**
@@ -89,25 +90,36 @@ const DIRECTIONS = [
 /* ---- 联系方式（字段来自 site.json contact，避免硬编码） ---- */
 const CONTACTS = [
   {
+    key: 'apply',
     label: '硕博研究生申请',
+    labelKey: 'join.applyMail',
     email: site.contact.applyEmail,
     note: '推免 / 统考 / 硕博连读 / 博士后',
+    noteKey: 'join.applyNote',
   },
   {
+    key: 'undergrad',
     label: '本科生科研与毕业设计',
+    labelKey: 'join.undergrad',
     email: site.contact.email2,
     note: '科研训练 / 毕业设计 / 实习',
+    noteKey: 'join.undergradNote',
   },
   {
+    key: 'coop',
     label: '合作与交流',
+    labelKey: 'join.coop',
     email: site.contact.email,
     note: '联合培养 / 学术合作',
+    noteKey: 'join.coopNote',
   },
 ]
 
 const isPending = (v) => !v || v.includes('待确认')
 
 export default function JoinUs() {
+  const t = useT()
+  const { lang } = useLang()
   const [copied, setCopied] = useState(false)
 
   /** 复制申请邮箱：浏览器未配置邮件客户端时，mailto 不会有反应，提供复制兜底 */
@@ -129,17 +141,17 @@ export default function JoinUs() {
   return (
     <>
       <PageHeader
-        title="加入我们"
+        title={t('join.title')}
         en="Join Us"
-        desc="欢迎对互联网基础技术、数据互操作与数据系统研究感兴趣的优秀学生加入团队。"
+        desc={t('join.desc')}
       />
 
       <div className="container section-pad">
         {/* ---- 招募对象 ---- */}
         <Section
-          title="招募对象"
+          title={t('join.who')}
           en="Who We Welcome"
-          subtitle="无论你处于本科、硕士或博士阶段，还是希望以实习形式走近科研，我们都欢迎你的加入。"
+          subtitle={t('join.whoDesc')}
         >
           <div className={styles.groupGrid}>
             {RECRUIT_GROUPS.map((g) => (
@@ -161,7 +173,7 @@ export default function JoinUs() {
 
         {/* ---- 我们期待 | 你可以参与 ---- */}
         <div className={styles.twoCol}>
-          <Section title="我们期待" en="What We Look For">
+          <Section title={t('join.expect')} en="What We Look For">
             <ul className={styles.expectList}>
               {EXPECTS.map((e) => (
                 <li key={e} className={styles.expectItem}>
@@ -172,7 +184,7 @@ export default function JoinUs() {
             </ul>
           </Section>
 
-          <Section title="你可以参与" en="What You'll Do">
+          <Section title={t('join.participate')} en="What You'll Do">
             <ol className={styles.participateList}>
               {PARTICIPATES.map((p, i) => (
                 <li key={p.title} className={styles.participateItem}>
@@ -192,7 +204,7 @@ export default function JoinUs() {
         {/* ---- 研究方向 ---- */}
         <section className={styles.directionBand} aria-label="实验室研究方向">
           <div className={styles.directionInner}>
-            <h2 className={styles.directionHeading}>研究方向</h2>
+            <h2 className={styles.directionHeading}>{t('join.directions')}</h2>
             <div className={styles.directionTags}>
               {DIRECTIONS.map((d) => (
                 <Tag key={d} variant="primary">
@@ -201,29 +213,29 @@ export default function JoinUs() {
               ))}
             </div>
             <p className={styles.directionNote}>
-              实验室长期围绕以上方向开展基础研究与关键技术攻关，欢迎对相关领域感兴趣的同学联系我们。
+              {t('join.directionNote')}
             </p>
           </div>
         </section>
 
         {/* ---- 联系方式 ---- */}
-        <Section id="contact" title="联系方式" en="Contact Us" className={styles.contactAnchor}>
+        <Section id="contact" title={t('join.contact')} en="Contact Us" className={styles.contactAnchor}>
           <div className={styles.contactGrid}>
             {CONTACTS.map((c) =>
               isPending(c.email) ? (
-                <div key={c.label} className={styles.contactCard}>
-                  <span className={styles.contactLabel}>{c.label}</span>
+                <div key={c.key} className={styles.contactCard}>
+                  <span className={styles.contactLabel}>{t(c.labelKey)}</span>
                   <span className={styles.contactPending}>
                     <Icon name="mail" size={14} />
-                    邮箱待确认
+                    {t('join.pendingMail')}
                   </span>
-                  <span className={styles.contactNote}>{c.note}</span>
+                  <span className={styles.contactNote}>{t(c.noteKey)}</span>
                 </div>
               ) : (
-                <a key={c.label} className={styles.contactCard} href={`mailto:${c.email}`}>
-                  <span className={styles.contactLabel}>{c.label}</span>
+                <a key={c.key} className={styles.contactCard} href={`mailto:${c.email}`}>
+                  <span className={styles.contactLabel}>{t(c.labelKey)}</span>
                   <span className={styles.contactEmail}>{c.email}</span>
-                  <span className={styles.contactNote}>{c.note}</span>
+                  <span className={styles.contactNote}>{t(c.noteKey)}</span>
                 </a>
               ),
             )}
@@ -233,12 +245,12 @@ export default function JoinUs() {
             <div className={styles.subjectRow}>
               <span className={styles.subjectHead}>
                 <Icon name="mail" size={17} />
-                邮件主题建议
+                {t('join.subject')}
               </span>
               <code className={styles.subjectCode}>{EMAIL_SUBJECT}</code>
             </div>
             <p className={styles.subjectHint}>
-              发送申请邮件时请按上述格式填写主题，并在正文中附上个人简历、成绩单与感兴趣的研究方向（如有论文或项目经历可一并提供）。
+              {t('join.subjectHint')}
             </p>
           </div>
 
@@ -249,15 +261,15 @@ export default function JoinUs() {
                 EMAIL_SUBJECT,
               )}&body=${encodeURIComponent(EMAIL_BODY)}`}
             >
-              发送申请邮件
+              {t('join.sendMail')}
               <Icon name="external" size={16} />
             </a>
             <button type="button" className={styles.ghostBtn} onClick={copyApplyEmail}>
-              {copied ? '邮箱已复制' : `复制邮箱 ${APPLY_EMAIL}`}
+              {copied ? t('join.mailCopied') : t('join.copyMail', { email: APPLY_EMAIL })}
               <Icon name={copied ? 'check' : 'copy'} size={16} />
             </button>
             <Link to="/about" className={styles.ghostBtn}>
-              先了解实验室
+              {t('join.learnLab')}
             </Link>
           </div>
         </Section>

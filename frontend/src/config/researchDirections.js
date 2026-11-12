@@ -16,6 +16,7 @@ export const RESEARCH_DIRECTIONS = [
     title: '数据互操作与智能互联网基础设施',
     en: 'Data Interoperation & Intelligent Internet Infrastructure',
     icon: 'ml',
+    enShort: 'Data Interoperation',
     summary:
       '面向智能互联网的数据互操作需求，研究数据授权、互操作与可信流转的关键技术，推动数据在跨主体、跨系统间安全共享、高效流通。',
     keywords: ['数据互操作', '数据授权', '去中心化数据管理', '访问控制'],
@@ -25,6 +26,7 @@ export const RESEARCH_DIRECTIONS = [
     title: '数据安全、身份认证与跨域授权',
     en: 'Data Security, Identity Authentication & Cross-Domain Authorization',
     icon: 'search',
+    enShort: 'Data Security',
     summary:
       '研究数据安全防护、身份认证与跨域授权、域名滥用检测与隐私保护技术，构建智能互联网数据流转的安全可信基础。',
     keywords: ['身份认证', '跨域授权', '数据安全', '隐私保护'],
@@ -34,6 +36,7 @@ export const RESEARCH_DIRECTIONS = [
     title: '互联网基础资源安全与治理',
     en: 'Internet Fundamental Resource Security & Governance',
     icon: 'hpc',
+    enShort: 'Internet Infrastructure',
     summary:
       '面向域名系统（DNS）、标识解析等互联网基础资源的建设、运行与安全保障，研究解析性能评估与治理机制，支撑国家网络空间基础设施的安全稳定。',
     keywords: ['域名系统', 'DNS', '标识解析', '网络治理'],
@@ -43,6 +46,7 @@ export const RESEARCH_DIRECTIONS = [
     title: '大规模数据管理与智能计算',
     en: 'Large-Scale Data Management & Intelligent Computing',
     icon: 'llm',
+    enShort: 'Data Management',
     summary:
       '研究面向时间序列与高维数据的索引、检索与分析系统，结合多核 CPU、GPU 等现代硬件优化，构建高性能的大规模数据管理基础设施。',
     keywords: ['时间序列索引', '近似最近邻搜索', 'GPU 加速', '高维数据'],

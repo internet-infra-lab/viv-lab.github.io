@@ -4,6 +4,7 @@ import Icon from '../components/Icon'
 import Tag from '../components/Tag'
 import assetUrl from '../utils/asset'
 import news from '../data/news.json'
+import { useT } from '../i18n/LangContext'
 import NotFound from './NotFound'
 import styles from './detail.module.css'
 
@@ -84,6 +85,7 @@ function renderBlock(block, idx) {
 }
 
 export default function NewsDetail() {
+  const t = useT()
   const { id } = useParams()
   const index = news.findIndex((n) => n.id === id)
   const item = news[index]
@@ -108,12 +110,12 @@ export default function NewsDetail() {
 
   return (
     <div className="container section-pad">
-      <nav className={styles.breadcrumb} aria-label="面包屑">
-        <Link to="/">首页</Link>
+      <nav className={styles.breadcrumb} aria-label={t('breadcrumb.label')}>
+        <Link to="/">{t('breadcrumb.home')}</Link>
         <span aria-hidden="true">›</span>
-        <Link to="/news">新闻动态</Link>
+        <Link to="/news">{t('breadcrumb.news')}</Link>
         <span aria-hidden="true">›</span>
-        <span aria-current="page">新闻详情</span>
+        <span aria-current="page">{t('breadcrumb.newsDetail')}</span>
       </nav>
 
       <article className={styles.newsArticle}>
@@ -121,7 +123,9 @@ export default function NewsDetail() {
           <div className={styles.metaRow}>
             <Tag variant="primary">{item.category}</Tag>
             <span className={styles.newsDate}>{item.date}</span>
-            {item.source && <span className={styles.newsSource}>来源：{item.source}</span>}
+            {item.source && (
+              <span className={styles.newsSource}>{t('news.source', { source: item.source })}</span>
+            )}
           </div>
           <h1 className={styles.newsTitle}>{item.title}</h1>
           {item.cover && (
@@ -150,19 +154,19 @@ export default function NewsDetail() {
               rel="noopener noreferrer"
             >
               <Icon name="external" size={16} />
-              阅读原文
+              {t('common.viewOriginal')}
             </a>
           )}
           <button type="button" className={styles.copyBtn} onClick={copyLink}>
             <Icon name={copied ? 'check' : 'copy'} size={16} />
-            {copied ? '链接已复制' : '复制链接'}
+            {copied ? t('common.linkCopied') : t('common.copyLink')}
           </button>
         </div>
 
-        <nav className={styles.prevNext} aria-label="上一篇下一篇">
+        <nav className={styles.prevNext} aria-label={t('news.prevNext')}>
           {prev ? (
             <Link to={`/news/${prev.id}`} className={styles.pnItem}>
-              <span className={styles.pnLabel}>上一篇</span>
+              <span className={styles.pnLabel}>{t('news.prev')}</span>
               <span className={styles.pnTitle}>{prev.title}</span>
             </Link>
           ) : (
@@ -170,7 +174,7 @@ export default function NewsDetail() {
           )}
           {next ? (
             <Link to={`/news/${next.id}`} className={`${styles.pnItem} ${styles.pnNext}`}>
-              <span className={styles.pnLabel}>下一篇</span>
+              <span className={styles.pnLabel}>{t('news.next')}</span>
               <span className={styles.pnTitle}>{next.title}</span>
             </Link>
           ) : (

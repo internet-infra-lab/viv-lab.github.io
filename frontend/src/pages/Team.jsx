@@ -6,6 +6,8 @@ import Tag from '../components/Tag'
 import Portrait from '../components/Portrait'
 import members from '../data/members.json'
 import directions from '../data/directions.json'
+import { getDirectionConfig } from '../config/researchDirections'
+import { useLang, useT } from '../i18n/LangContext'
 import styles from './Team.module.css'
 
 /**
@@ -26,8 +28,8 @@ import styles from './Team.module.css'
 /** 教师职称排序（导师团队展示顺序，沿用既有逻辑） */
 const TITLE_RANK = { 教授: 0, 研究员: 1, 副教授: 2, 副研究员: 3, 讲师: 4, 助理研究员: 5 }
 
-/** 学历类型文案 */
-const DEGREE_LABEL = { phd: '博士生', master: '硕士生' }
+/** 学历类型 → i18n key */
+const DEGREE_KEY = { phd: 'team.degree.phd', master: 'team.degree.master', faculty: 'team.degree.faculty' }
 
 /** 研究方向 id → 详情映射（面板标签展示用） */
 const DIR_MAP = Object.fromEntries(directions.map((d) => [d.id, d]))
@@ -42,7 +44,8 @@ const parseGrade = (grade) => {
  * 研究生悬停详情预览面板（轻量级成员档案，不新增独立详情页）
  * 展示字段全部来自 members.json 可选字段，缺失时自动隐藏并给出「整理中」占位。
  */
-function StudentPreview({ student: s }) {
+function StudentPreview({ student: s, lang }) {
+  const t = useT()
   const dirs = (s.research_direction || [])
     .map((id) => DIR_MAP[id])
     .filter(Boolean)
@@ -50,23 +53,27 @@ function StudentPreview({ student: s }) {
   const hasExtra = dirs.length > 0 || s.researchArea || s.homepage
 
   return (
-    <div className={styles.studentPanel} role="group" aria-label={`${s.name} 成员信息`}>
+    <div className={styles.studentPanel} role="group" aria-label={t('team.panel.aria', { name: s.name })}>
       <div className={styles.panelHead}>
         <h4 className={styles.panelName}>{s.name}</h4>
-        <span className={styles.studentDegree}>{DEGREE_LABEL[s.role] || s.title || '研究生'}</span>
+        <span className={styles.studentDegree}>
+          {DEGREE_KEY[s.role] ? t(DEGREE_KEY[s.role]) : s.title || t('team.degree.student')}
+        </span>
       </div>
       <p className={styles.panelGrade}>
         <Icon name="calendar" size={13} />
-        {parseGrade(s.grade) || s.grade || '在读'}
+        {parseGrade(s.grade) || s.grade || (lang === 'en' ? 'Current' : '在读')}
       </p>
 
       {dirs.length > 0 && (
         <div className={styles.panelBlock}>
-          <span className={styles.panelLabel}>研究方向</span>
+          <span className={styles.panelLabel}>{t('team.panel.direction')}</span>
           <div className={styles.panelTags}>
             {dirs.map((d) => (
               <Link key={d.id} to={`/research/${d.id}`}>
-                <Tag variant="primary">{d.title}</Tag>
+                <Tag variant="primary">
+                  {lang === 'en' ? getDirectionConfig(d.id)?.enShort || d.title : d.title}
+                </Tag>
               </Link>
             ))}
           </div>
@@ -75,7 +82,7 @@ function StudentPreview({ student: s }) {
 
       {s.researchArea && (
         <div className={styles.panelBlock}>
-          <span className={styles.panelLabel}>研究兴趣</span>
+          <span className={styles.panelLabel}>{t('team.panel.interest')}</span>
           <p className={styles.panelText}>{s.researchArea}</p>
         </div>
       )}
@@ -83,16 +90,18 @@ function StudentPreview({ student: s }) {
       {s.homepage && (
         <a className={styles.panelLink} href={s.homepage} target="_blank" rel="noopener noreferrer">
           <Icon name="external" size={13} />
-          个人主页
+          {t('team.panel.homepage')}
         </a>
       )}
 
-      {!hasExtra && <p className={styles.panelEmpty}>研究信息整理中，敬请期待</p>}
+      {!hasExtra && <p className={styles.panelEmpty}>{t('team.panel.pending')}</p>}
     </div>
   )
 }
 
 export default function Team() {
+  const t = useT()
+  const { lang } = useLang()
   const faculty = members
     .filter((m) => m.role === 'faculty')
     .slice()
@@ -112,20 +121,20 @@ export default function Team() {
 
   return (
     <>
-      <PageHeader
-        title="团队成员"
-        en="Team Members"
-        desc="导师团队与在读、已毕业研究生一览。"
-      />
+      <PageHeader title={t('team.title')} en="Team Members" desc={t('team.desc')} />
 
       <div className="container section-pad">
         {/* ---- 导师团队（视觉权重最高：浅蓝衬底 + 大卡片） ---- */}
         <Section
           className={styles.facultyBand}
-          title="导师团队"
+          title={t('team.faculty')}
           en="Faculty"
           index="01"
-          subtitle="实验室学术带头人，欢迎对相关方向感兴趣的学子联系导师。"
+          subtitle={
+            lang === 'en'
+              ? 'Academic leads of the lab. Students interested in related directions are welcome to contact them.'
+              : '实验室学术带头人，欢迎对相关方向感兴趣的学子联系导师。'
+          }
         >
           <div className={styles.facultyGrid}>
             {faculty.map((m, i) => {
@@ -146,26 +155,26 @@ export default function Team() {
                     <a
                       {...externalProps}
                       className={styles.facultyPhotoLink}
-                      aria-label={`${m.name} 个人主页`}
+                      aria-label={t('team.homepage.aria', { name: m.name })}
                     >
                       <Portrait name={m.name} src={m.photo} className={styles.facultyPortrait} />
                       <span className={styles.facultyPhotoVeil} aria-hidden="true" />
                       <span className={styles.facultyPhotoHint}>
                         <Icon name="external" size={13} />
-                        查看个人主页
+                        {t('team.panel.homepage')}
                       </span>
                     </a>
                   ) : (
                     <Link
                       to={`/faculty/${m.id}`}
                       className={styles.facultyPhotoLink}
-                      aria-label={`${m.name} 个人主页`}
+                      aria-label={t('team.homepage.aria', { name: m.name })}
                     >
                       <Portrait name={m.name} src={m.photo} className={styles.facultyPortrait} />
                       <span className={styles.facultyPhotoVeil} aria-hidden="true" />
                       <span className={styles.facultyPhotoHint}>
                         <Icon name="external" size={13} />
-                        查看个人主页
+                        {t('team.panel.homepage')}
                       </span>
                     </Link>
                   )}
@@ -177,7 +186,7 @@ export default function Team() {
                           <a
                             {...externalProps}
                             className={styles.facultyNameLink}
-                            aria-label={`${m.name} 个人主页`}
+                            aria-label={t('team.homepage.aria', { name: m.name })}
                           >
                             {m.name}
                           </a>
@@ -201,12 +210,12 @@ export default function Team() {
 
                     {external ? (
                       <a {...externalProps} className={styles.facultyMore}>
-                        访问个人主页
+                        {t('detail.homepage')}
                         <Icon name="external" size={14} />
                       </a>
                     ) : (
                       <Link to={`/faculty/${m.id}`} className={styles.facultyMore}>
-                        查看完整履历
+                        {lang === 'en' ? 'Full profile' : '查看完整履历'}
                         <Icon name="arrowRight" size={14} />
                       </Link>
                     )}
@@ -219,10 +228,10 @@ export default function Team() {
 
         {/* ---- 研究生（紧凑小卡，一排六个） ---- */}
         <Section
-          title="研究生"
+          title={t('team.students')}
           en="Graduate Students"
           index="02"
-          subtitle="在读博士生与硕士生，按入学年级从高到低排列；悬停卡片可查看成员信息预览。"
+          subtitle={t('team.studentsDesc')}
         >
           {current.length > 0 ? (
             <div className={styles.studentGrid}>
@@ -238,7 +247,7 @@ export default function Team() {
                       <h3 className={styles.studentName}>{s.name}</h3>
                       <p className={styles.studentMeta}>
                         <span className={styles.studentDegree}>
-                          {DEGREE_LABEL[s.role] || s.title || '研究生'}
+                          {DEGREE_KEY[s.role] ? t(DEGREE_KEY[s.role]) : s.title || t('team.degree.student')}
                         </span>
                         <span className={styles.metaDot} />
                         <span className={styles.studentGrade}>
@@ -249,21 +258,21 @@ export default function Team() {
                   </Link>
 
                   {/* 悬停浮出的轻量成员档案 */}
-                  <StudentPreview student={s} />
+                  <StudentPreview student={s} lang={lang} />
                 </div>
               ))}
             </div>
           ) : (
-            <p className={styles.empty}>暂无在读研究生</p>
+            <p className={styles.empty}>{t('team.emptyStudents')}</p>
           )}
         </Section>
 
         {/* ---- 毕业生（小圆圈头像小卡片，独立展示、弱化视觉权重） ---- */}
-        <section className={styles.alumniSection} aria-label="毕业生">
+        <section className={styles.alumniSection} aria-label={t('team.alumni')}>
           <div className={styles.alumniHead}>
-            <h2 className={styles.alumniTitle}>毕业生</h2>
+            <h2 className={styles.alumniTitle}>{t('team.alumni')}</h2>
             <span className={styles.alumniEn}>Alumni</span>
-            <span className={styles.alumniCount}>{alumni.length} 人</span>
+            <span className={styles.alumniCount}>{t('team.alumniCount', { n: alumni.length })}</span>
           </div>
 
           {alumni.length > 0 ? (
@@ -273,16 +282,20 @@ export default function Team() {
                   <Link
                     to={`/team/${m.id}`}
                     className={styles.studentLink}
-                    aria-label={`${m.name} 个人主页`}
+                    aria-label={t('team.homepage.aria', { name: m.name })}
                   >
                     <article className={styles.alumniCard}>
                       <Portrait name={m.name} src={m.photo} className={styles.alumniAvatar} />
                       <div className={styles.alumniInfo}>
                         <h3 className={styles.alumniName}>{m.name}</h3>
                         <p className={styles.alumniMeta}>
-                          <span>{DEGREE_LABEL[m.role] || m.title || '研究生'}</span>
+                          <span>
+                            {DEGREE_KEY[m.role] ? t(DEGREE_KEY[m.role]) : m.title || t('team.degree.student')}
+                          </span>
                           <span className={styles.alumniYear}>
-                            {m.graduationYear ? `${m.graduationYear} 年毕业` : '已毕业'}
+                            {m.graduationYear
+                            ? t('team.graduatedYear', { year: m.graduationYear })
+                            : t('team.graduated')}
                           </span>
                         </p>
                       </div>
@@ -290,12 +303,12 @@ export default function Team() {
                   </Link>
 
                   {/* 悬停浮出的轻量成员档案（与在读研究生一致） */}
-                  <StudentPreview student={m} />
+                  <StudentPreview student={m} lang={lang} />
                 </div>
               ))}
             </div>
           ) : (
-            <p className={styles.empty}>暂无毕业生记录</p>
+            <p className={styles.empty}>{t('team.emptyAlumni')}</p>
           )}
         </section>
       </div>

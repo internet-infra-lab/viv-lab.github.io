@@ -8,13 +8,20 @@ import Icon from '../components/Icon'
 import papers from '../data/papers.json'
 import directions from '../data/directions.json'
 import { signaturesForQuery } from '../utils/authorNames'
+import { getDirectionConfig } from '../config/researchDirections'
+import { useLang, useT } from '../i18n/LangContext'
 import styles from './Publications.module.css'
 
 const PAGE_SIZE = 10
 
 const TYPES = ['全部', '期刊', '会议', '专利']
 
+/** 论文类型 → i18n key（数据值仍用中文，仅展示层翻译） */
+const TYPE_KEY = { 期刊: 'pub.type.journal', 会议: 'pub.type.conference', 专利: 'pub.type.patent' }
+
 export default function Publications() {
+  const t = useT()
+  const { lang } = useLang()
   const [searchParams, setSearchParams] = useSearchParams()
 
   const type = searchParams.get('type') || '全部'
@@ -73,26 +80,22 @@ export default function Publications() {
 
   return (
     <>
-      <PageHeader
-        title="学术论文"
-        en="Publications"
-        desc="实验室论文与专利成果库，可按类型、年份与研究方向检索。"
-      />
+      <PageHeader title={t('pub.title')} en="Publications" desc={t('pub.desc')} />
 
       <div className="container section-pad">
         {/* ---- 筛选栏 ---- */}
         <div className={styles.filterBar}>
           <div className={styles.filterGroup}>
-            <span className={styles.filterLabel}>类型</span>
+            <span className={styles.filterLabel}>{t('pub.filter.type')}</span>
             <div className={styles.typeTabs}>
-              {TYPES.map((t) => (
+              {TYPES.map((option) => (
                 <button
-                  key={t}
+                  key={option}
                   type="button"
-                  className={`${styles.typeTab} ${type === t ? styles.typeTabActive : ''}`}
-                  onClick={() => updateParams({ type: t, page: 1 })}
+                  className={`${styles.typeTab} ${type === option ? styles.typeTabActive : ''}`}
+                  onClick={() => updateParams({ type: option, page: 1 })}
                 >
-                  {t}
+                  {TYPE_KEY[option] ? t(TYPE_KEY[option]) : t('common.all')}
                 </button>
               ))}
             </div>
@@ -100,13 +103,13 @@ export default function Publications() {
 
           <div className={styles.selects}>
             <label className={styles.selectWrap}>
-              <span className={styles.filterLabel}>年份</span>
+              <span className={styles.filterLabel}>{t('pub.filter.year')}</span>
               <span className={styles.selectBox}>
                 <select
                   value={year}
                   onChange={(e) => updateParams({ year: e.target.value, page: 1 })}
                 >
-                  <option value="全部">全部年份</option>
+                  <option value="全部">{t('pub.allYears')}</option>
                   {years.map((y) => (
                     <option key={y} value={y}>
                       {y}
@@ -118,32 +121,35 @@ export default function Publications() {
             </label>
 
             <label className={styles.selectWrap}>
-              <span className={styles.filterLabel}>方向</span>
+              <span className={styles.filterLabel}>{t('pub.filter.direction')}</span>
               <span className={styles.selectBox}>
                 <select
                   value={direction}
                   onChange={(e) => updateParams({ direction: e.target.value, page: 1 })}
                 >
-                  <option value="全部">全部方向</option>
-                  {directions.map((d) => (
-                    <option key={d.id} value={d.id}>
-                      {d.title}
-                    </option>
-                  ))}
+                  <option value="全部">{t('common.all')}</option>
+                  {directions.map((d) => {
+                    const config = getDirectionConfig(d.id)
+                    return (
+                      <option key={d.id} value={d.id}>
+                        {lang === 'en' ? config?.en || d.title : config?.title || d.title}
+                      </option>
+                    )
+                  })}
                 </select>
                 <Icon name="chevronDown" size={14} className={styles.selectIcon} />
               </span>
             </label>
 
             <label className={styles.selectWrap}>
-              <span className={styles.filterLabel}>排序</span>
+              <span className={styles.filterLabel}>{t('pub.filter.sort')}</span>
               <span className={styles.selectBox}>
                 <select
                   value={sort}
                   onChange={(e) => updateParams({ sort: e.target.value })}
                 >
-                  <option value="desc">年份 新 → 旧</option>
-                  <option value="asc">年份 旧 → 新</option>
+                  <option value="desc">{t('pub.sort.desc')}</option>
+                  <option value="asc">{t('pub.sort.asc')}</option>
                 </select>
                 <Icon name="chevronDown" size={14} className={styles.selectIcon} />
               </span>
@@ -151,7 +157,7 @@ export default function Publications() {
           </div>
 
           <span className={styles.resultCount}>
-            共 {filtered.length} 篇
+            {t('pub.total', { n: filtered.length })}
             {q && <span className={styles.resultQuery}>（搜索：{q}）</span>}
           </span>
         </div>
@@ -165,9 +171,13 @@ export default function Publications() {
           </div>
         ) : (
           <EmptyState
-            title="未找到匹配的论文"
-            desc="请尝试调整筛选条件或搜索关键词。"
-            actionLabel="重置筛选"
+            title={lang === 'en' ? 'No matching publications' : '未找到匹配的论文'}
+            desc={
+              lang === 'en'
+                ? 'Try adjusting the filters or the search keywords.'
+                : '请尝试调整筛选条件或搜索关键词。'
+            }
+            actionLabel={lang === 'en' ? 'Reset filters' : '重置筛选'}
             onAction={() => setSearchParams({})}
           />
         )}

@@ -6,10 +6,13 @@ import Tag from '../components/Tag'
 import directions from '../data/directions.json'
 import papers from '../data/papers.json'
 import { getDirectionConfig } from '../config/researchDirections'
+import { useLang, useT } from '../i18n/LangContext'
 import NotFound from './NotFound'
 import styles from './detail.module.css'
 
 export default function DirectionDetail() {
+  const t = useT()
+  const { lang } = useLang()
   const { id } = useParams()
   const direction = directions.find((d) => d.id === id)
 
@@ -17,7 +20,8 @@ export default function DirectionDetail() {
 
   // 展示层文案（标题/英文名/关键词）优先取表现层配置，正文内容仍用数据源
   const config = getDirectionConfig(id)
-  const displayTitle = config?.title || direction.title
+  const displayTitle =
+    lang === 'en' ? config?.en || direction.en || config?.title : config?.title || direction.title
   const displayEn = config?.en || direction.en
   const displayKeywords = config?.keywords || direction.keywords
 
@@ -49,7 +53,7 @@ export default function DirectionDetail() {
         )}
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>方向概述</h2>
+          <h2 className={styles.sectionTitle}>{t('research.direction.detail')}</h2>
           <div className="prose">
             {direction.lead && (
               <p className={styles.paragraph}>{direction.lead}</p>
@@ -64,7 +68,7 @@ export default function DirectionDetail() {
 
         {direction.highlights && direction.highlights.length > 0 && (
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>代表性成果</h2>
+            <h2 className={styles.sectionTitle}>{t('research.direction.works')}</h2>
             <ul className={styles.highlightList}>
               {direction.highlights.map((h) => (
                 <li key={h.title} className={styles.highlightItem}>
@@ -79,7 +83,7 @@ export default function DirectionDetail() {
           </section>
         )}
 
-        <Section title="相关论文" en="Related Publications">
+        <Section title={t('research.direction.related')} en="Related Publications">
           {relatedPapers.length > 0 ? (
             <div className={styles.paperList}>
               {relatedPapers.map((p) => (
@@ -87,12 +91,12 @@ export default function DirectionDetail() {
               ))}
             </div>
           ) : (
-            <p className={styles.none}>暂无相关论文</p>
+            <p className={styles.none}>{t('research.direction.none')}</p>
           )}
         </Section>
 
         <Link to="/research" className={styles.backLink}>
-          ← 返回研究方向与科研项目
+          {t('common.backToResearch')}
         </Link>
       </div>
     </>
