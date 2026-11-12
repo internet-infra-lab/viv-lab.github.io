@@ -1,7 +1,65 @@
 [
   {
+    "id": "dalq-ecmlpkdd-2026",
+    "title": "DalQ: Reconciling Accuracy and Efficiency in Vector Quantization",
+    "authors": [
+      { "name": "Hao Zheng", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Botao Peng", "corresponding": false },
+      { "name": "Tianqi Hou", "corresponding": false },
+      { "name": "Themis Palpanas", "corresponding": false }
+    ],
+    "venue": "ECML PKDD 2026",
+    "year": 2026,
+    "type": "会议",
+    "doi": "https://doi.org/10.1007/978-3-032-37670-1_25",
+    "abstract": "Vector quantization is a fundamental technique for reducing memory footprint and computational overhead in modern database systems, search engines, and large language models. However, existing vector quantization methods remain limited in simultaneously achieving high quantization accuracy and computational efficiency. In this paper, we propose Distribution-aware locally-adaptive Quantization (DalQ), which achieves superior accuracy with competitive efficiency through two key mechanisms. First, distribution-aware range adaptation leverages Gaussian-like embedding distributions via an adaptive clip factor, concentrating precision in high-density regions while tolerating controlled clipping of rare outliers. Second, decomposed vector refinement employs a two-stage geometric optimization strategy for near-optimal reconstruction: directional alignment via iterative code search and magnitude refinement via projection-based scaling. We prove the existence and uniqueness of the optimal clip factor and identify a reference clip factor enabling tuning-free deployment. Extensive evaluations demonstrate the substantial advantages of DalQ over state-of-the-art baselines. Against LVQ, DalQ achieves up to 96.6% reduction in quantization error with competitive efficiency. Against RaBitQ, DalQ not only reduces quantization error by up to 63.4%, but also delivers up to 25.8x faster quantization and up to 3.2x faster distance computation.",
+    "keywords": ["向量量化", "近似最近邻搜索", "分布感知自适应", "量化误差"],
+    "research_direction": ["dir9"],
+    "featured": true
+  },
+  {
+    "id": "fedatmv-tmc-2026",
+    "title": "FedATMV: Towards Heterogeneous Hybrid Federated Learning via Adaptive Server-Side Training and Model Variation",
+    "authors": [
+      { "name": "Yufan Fu", "corresponding": false },
+      { "name": "Xiaodong Lee", "corresponding": true },
+      { "name": "Sheng Sun", "corresponding": false },
+      { "name": "Themis Palpanas", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": false }
+    ],
+    "venue": "IEEE Transactions on Mobile Computing",
+    "year": 2026,
+    "type": "期刊",
+    "doi": "https://doi.org/10.1109/TMC.2026.3747858",
+    "abstract": "With the explosive growth of distributed data sources and increasing concerns over data privacy, Federated Learning (FL) has emerged as a promising paradigm for privacy-preserving, distributed model training. However, traditional FL frameworks often underutilize the computational and data resources of the central server, limiting their applicability in real-world scenarios. Hybrid Federated Learning (HFL) addresses this issue by enabling collaborative training between the server and clients, but it introduces new challenges, particularly in handling server-client data heterogeneity—unbalanced, non-independent and identically distributed (non-IID) server data—a factor often underexplored in existing HFL studies. To tackle this, we propose FedATMV, a novel HFL framework that integrates Adaptive server-side Training (AT) and Model Variation (MV). FedATMV adaptively adjusts the server's training impact via a multifaceted scaling factor, considering server data proportion, non-IID degree, model accuracy, and recent performance trends, ensuring robust utilization of server resources and mitigating server-induced bias. Additionally, FedATMV generates diverse sub-models for clients by adaptively varying the global model, encouraging exploration of flatter regions in the loss landscape and enhancing generalization. Comprehensive experiments demonstrate FedATMV achieves relative accuracy improvements of 2.47%–31.20% over the best-performing HFL baseline across various heterogeneous settings, without incurring additional communication overhead.",
+    "keywords": ["联邦学习", "混合联邦学习", "数据异构性", "分布式数据挖掘"],
+    "research_direction": ["dir9"],
+    "featured": true
+  },
+  {
+    "id": "pariskv-icml-2026",
+    "title": "ParisKV: Fast and Drift-Robust KV-Cache Retrieval for Long-Context LLMs",
+    "authors": [
+      { "name": "Yanlin Qi", "corresponding": false },
+      { "name": "Xinhang Chen", "corresponding": false },
+      { "name": "Huiqiang Jiang", "corresponding": false },
+      { "name": "Qitong Wang", "corresponding": false },
+      { "name": "Botao Peng", "corresponding": true },
+      { "name": "Themis Palpanas", "corresponding": false }
+    ],
+    "venue": "ICML 2026",
+    "year": 2026,
+    "type": "会议",
+    "doi": "https://doi.org/10.48550/arXiv.2602.07721",
+    "abstract": "KV-cache retrieval is essential for long-context LLM inference, yet existing methods struggle with distribution drift and high latency at scale. We introduce ParisKV, a drift-robust, GPU-native KV-cache retrieval framework based on collision-based candidate selection, followed by a quantized inner-product reranking estimator. For million-token contexts, ParisKV supports CPU-offloaded KV caches via Unified Virtual Addressing (UVA), enabling on-demand top-k fetching with minimal overhead. ParisKV matches or outperforms full attention quality on both long-input and long-generation benchmarks. It achieves state-of-the-art long-context decoding efficiency: it matches or exceeds full-attention speed even at batch size 1 for long contexts, delivers up to 2.8x higher throughput within full attention's runnable range, and scales to million-token contexts where full attention runs out of memory. At million-token scale, ParisKV reduces decode latency by 17x and 44x compared to MagicPIG and PQCache, respectively—two state-of-the-art KV-cache top-k retrieval baselines; code is available at https://github.com/amy-77/ParisKV/tree/main.",
+    "keywords": ["KV 缓存检索", "长上下文推理", "向量检索", "大语言模型"],
+    "research_direction": ["dir9"],
+    "featured": false
+  },
+  {
     "id": "pdet-lsh-tkde-2026",
-    "title": "PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search with Quality Guarantees",
+    "title": "PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search With Quality Guarantees",
     "authors": [
       { "name": "Jiuqi Wei", "corresponding": false },
       { "name": "Xiaodong Lee", "corresponding": true },

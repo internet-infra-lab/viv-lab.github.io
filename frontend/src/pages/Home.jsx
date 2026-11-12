@@ -26,8 +26,8 @@ const HERO = {
 /** 首页代表成果策展顺序（置顶为核心代表作「Dominate Data by Yourself」） */
 const HOMEPAGE_PAPERS = [
   'dominate-data-wwwj-2025',
-  'pdet-lsh-tkde-2026',
-  'structured-policy-ist-2026',
+  'dalq-ecmlpkdd-2026',
+  'fedatmv-tmc-2026',
 ]
 
 /** 平台实践（实验室自研数据互操作平台展示） */

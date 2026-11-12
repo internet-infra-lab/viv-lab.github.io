@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import Icon from '../components/Icon'
 import PublicationCard from '../components/PublicationCard'
 import assetUrl from '../utils/asset'
+import { papersOfMember } from '../utils/authorNames'
 import members from '../data/members.json'
 import directions from '../data/directions.json'
 import papers from '../data/papers.json'
@@ -16,12 +17,6 @@ import styles from './FacultyDetail.module.css'
  * 说明：标记了 externalDetail 的导师（如彭博韬）不再使用站内详情页，
  *       访问 /faculty/:id 时自动跳转到其个人主页。
  */
-
-/** 导师英文署名（用于从论文数据中聚合代表论文；与数据端署名变体保持一致） */
-const EN_NAMES = {
-  'li-xiaodong': ['Xiaodong Lee', 'Xiaodong Li'],
-  'peng-botao': ['Botao Peng'],
-}
 
 /** 详情页展示的代表论文上限（PRD 5.3：5~10 篇） */
 const REPRESENTATIVE_LIMIT = 10
@@ -64,10 +59,7 @@ export default function FacultyDetail() {
     .map((d) => dirMap[d])
     .filter(Boolean)
 
-  const names = EN_NAMES[id] || []
-  const representatives = papers
-    .filter((p) => p.authors.some((a) => names.includes(a.name)))
-    .slice(0, REPRESENTATIVE_LIMIT)
+  const representatives = papersOfMember(papers, id).slice(0, REPRESENTATIVE_LIMIT)
 
   return (
     <div className="container section-pad">

@@ -1,5 +1,58 @@
 [
   {
+    "id": "news-pdet-lsh-tkde-2026",
+    "title": "互联网基础技术实验室论文发表于 IEEE TKDE",
+    "date": "2026-06-01",
+    "category": "科研成果",
+    "summary": "实验室论文《PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search With Quality Guarantees》发表于 IEEE Transactions on Knowledge and Data Engineering（TKDE）2026 年第 38 卷第 6 期。该方法基于动态编码树与多核并行实现内存级高维近似最近邻检索，在保持查询精度的同时，索引时间最高提速 40 倍、查询时间最高提速 62 倍。",
+    "content": [
+      {
+        "type": "p",
+        "text": "实验室论文《PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search With Quality Guarantees》正式发表于 IEEE Transactions on Knowledge and Data Engineering（TKDE）2026 年第 38 卷第 6 期（第 3818–3834 页）。"
+      },
+      {
+        "type": "h2",
+        "text": "论文信息"
+      },
+      {
+        "type": "p",
+        "text": "论文题目：PDET-LSH: Scalable In-Memory Indexing for High-Dimensional Approximate Nearest Neighbor Search With Quality Guarantees"
+      },
+      {
+        "type": "p",
+        "text": "作者：Jiuqi Wei, Xiaodong Lee, Botao Peng, Quanqing Xu, Chuanhui Yang, Themis Palpanas"
+      },
+      {
+        "type": "p",
+        "text": "实验室毕业生魏久麒博士为该论文第一作者，李晓东研究员为通讯作者。该工作延续实验室在高维近似最近邻检索方向的研究积累，与 DET-LSH（VLDB 2024）、Subspace Collision（SIGMOD 2025）等工作共同构成具有理论保证的高维检索技术体系。"
+      },
+      {
+        "type": "h2",
+        "text": "技术亮点"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "提出编码型树结构 Dynamic Encoding Tree（DE-Tree），改善索引阶段的构建效率并支持高效范围查询",
+          "基于 DE-Tree 提出局部敏感哈希方案 DET-LSH，通过在多棵独立索引 DE-Tree 上执行范围查询，降低漏检真实近邻点的概率",
+          "进一步提出面向多核 CPU 并行化机会的内存方法 PDET-LSH，在保持与 DET-LSH 相同查询精度的同时，索引时间最高提速 40 倍、查询时间最高提速 62 倍",
+          "理论分析证明 DET-LSH 与 PDET-LSH 在查询结果精度上具有概率性保证"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "期刊简介"
+      },
+      {
+        "type": "p",
+        "text": "IEEE Transactions on Knowledge and Data Engineering（TKDE）是数据管理与知识发现领域的国际权威期刊。在中国计算机学会（CCF）推荐国际学术会议和期刊目录中，TKDE 位列数据库/数据挖掘/内容检索领域 A 类期刊。"
+      }
+    ],
+    "source": "互联网基础技术实验室",
+    "sourceUrl": "https://doi.org/10.1109/TKDE.2026.3677369",
+    "archived": false
+  },
+  {
     "id": "news-2026-defense-graduates",
     "title": "互联网基础技术实验室两名研究生顺利通过学位论文答辩",
     "date": "2026-05-14",

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import Icon from '../components/Icon'
 import Tag from '../components/Tag'
 import papers from '../data/papers.json'
+import { memberBySignature, memberPath } from '../utils/authorNames'
 import NotFound from './NotFound'
 import styles from './detail.module.css'
 
@@ -25,9 +26,6 @@ export default function PublicationDetail() {
   if (!paper) return <NotFound />
 
   const citation = buildCitation(paper)
-  const authorText = paper.authors
-    .map((a) => (a.corresponding ? `${a.name}*` : a.name))
-    .join(', ')
 
   const copyCitation = async () => {
     try {
@@ -62,7 +60,24 @@ export default function PublicationDetail() {
         </div>
 
         <h1 className={styles.paperTitle}>{paper.title}</h1>
-        <p className={styles.authors}>{authorText}</p>
+        <p className={styles.authors}>
+          {paper.authors.map((a, i) => {
+            const member = memberBySignature(a.name)
+            const label = a.corresponding ? `${a.name}*` : a.name
+            return (
+              <span key={`${a.name}-${i}`}>
+                {member ? (
+                  <Link to={memberPath(member)} className={styles.authorLink}>
+                    {label}
+                  </Link>
+                ) : (
+                  label
+                )}
+                {i < paper.authors.length - 1 ? ', ' : ''}
+              </span>
+            )
+          })}
+        </p>
         <p className={styles.venue}>{paper.venue}</p>
 
         {paper.abstract && (

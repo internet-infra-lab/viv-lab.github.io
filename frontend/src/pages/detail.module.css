@@ -248,6 +248,19 @@
   margin-bottom: 4px;
 }
 
+/* 作者为站内成员时生成主页链接（外部合作者保持普通文本） */
+.authorLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease-out;
+}
+
+.authorLink:hover {
+  color: var(--color-primary);
+}
+
 .venue {
   font-size: var(--font-body-sm);
   color: var(--color-text-muted);

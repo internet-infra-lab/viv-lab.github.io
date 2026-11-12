@@ -1,9 +1,12 @@
 import { Link, useParams } from 'react-router-dom'
 import Icon from '../components/Icon'
+import PublicationCard from '../components/PublicationCard'
 import Tag from '../components/Tag'
 import assetUrl from '../utils/asset'
+import { papersOfMember } from '../utils/authorNames'
 import members from '../data/members.json'
 import directions from '../data/directions.json'
+import papers from '../data/papers.json'
 import NotFound from './NotFound'
 import styles from './detail.module.css'
 
@@ -15,6 +18,7 @@ export default function MemberDetail() {
 
   const initials = member.name.slice(-2)
   const dirMap = Object.fromEntries(directions.map((d) => [d.id, d]))
+  const memberPapers = papersOfMember(papers, member.id)
 
   return (
     <div className="container section-pad">
@@ -76,6 +80,18 @@ export default function MemberDetail() {
               </li>
             ))}
           </ol>
+        </section>
+      )}
+
+      {/* ---- 代表论文（按论文数据中署名为本人的记录聚合，复用论文条目组件） ---- */}
+      {memberPapers.length > 0 && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>代表论文</h2>
+          <div className={styles.paperList}>
+            {memberPapers.map((p) => (
+              <PublicationCard key={p.id} paper={p} />
+            ))}
+          </div>
         </section>
       )}
     </div>

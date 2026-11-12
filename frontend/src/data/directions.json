@@ -74,6 +74,6 @@
     "keywords": ["近似最近邻搜索", "局部敏感哈希", "内存索引", "高维数据", "并行计算"],
     "methods": ["近似最近邻搜索", "局部敏感哈希", "动态编码树", "子空间碰撞", "多核并行"],
     "highlights": [],
-    "featuredPapers": ["det-lsh-vldb-2024", "pdet-lsh-tkde-2026", "subspace-collision-sigmod-2025"]
+    "featuredPapers": ["dalq-ecmlpkdd-2026", "fedatmv-tmc-2026", "pariskv-icml-2026", "det-lsh-vldb-2024", "pdet-lsh-tkde-2026", "subspace-collision-sigmod-2025"]
   }
 ]
