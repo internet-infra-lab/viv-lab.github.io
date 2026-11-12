@@ -16,6 +16,7 @@ import DirectionDetail from './pages/DirectionDetail'
 import PublicationDetail from './pages/PublicationDetail'
 import NewsDetail from './pages/NewsDetail'
 import JoinUs from './pages/JoinUs'
+import Search from './pages/Search'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/publications/:id" element={<PublicationDetail />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<NewsDetail />} />
+          <Route path="/search" element={<Search />} />
           {/* 信息架构调整：科研项目并入「研究方向与科研项目」（/research），旧入口重定向 */}
           <Route path="/projects" element={<Navigate to="/research" replace />} />
           <Route path="/join-us" element={<JoinUs />} />

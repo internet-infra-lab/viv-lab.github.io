@@ -7,6 +7,7 @@ import EmptyState from '../components/EmptyState'
 import Icon from '../components/Icon'
 import papers from '../data/papers.json'
 import directions from '../data/directions.json'
+import { signaturesForQuery } from '../utils/authorNames'
 import styles from './Publications.module.css'
 
 const PAGE_SIZE = 10
@@ -38,15 +39,23 @@ export default function Publications() {
   }
 
   const filtered = useMemo(() => {
+    const kw = q.toLowerCase()
+    // 中文姓名检索时，同时匹配该成员的英文署名（如「李颖」→ Ying Li）
+    const aliases = signaturesForQuery(q).map((n) => n.toLowerCase())
     let list = papers.filter((p) => {
       if (type !== '全部' && p.type !== type) return false
       if (year !== '全部' && p.year !== Number(year)) return false
       if (direction !== '全部' && !p.research_direction.includes(direction)) return false
       if (q) {
-        const kw = q.toLowerCase()
         const hit =
           p.title.toLowerCase().includes(kw) ||
           p.abstract?.toLowerCase().includes(kw) ||
+          p.venue.toLowerCase().includes(kw) ||
+          p.authors.some(
+            (a) =>
+              a.name.toLowerCase().includes(kw) ||
+              aliases.some((alias) => alias.includes(a.name.toLowerCase())),
+          ) ||
           p.keywords.some((k) => k.toLowerCase().includes(kw))
         if (!hit) return false
       }

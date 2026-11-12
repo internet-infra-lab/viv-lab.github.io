@@ -131,6 +131,32 @@ const paths = {
       <path d="M10 12h4" />
     </>
   ),
+  /* 站内搜索分类图标：学术成果 / 新闻动态 / 团队成员 */
+  fileText: (
+    <>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+      <path d="M14 3v5h5" />
+      <path d="M9 13h6" />
+      <path d="M9 17h4" />
+    </>
+  ),
+  newspaper: (
+    <>
+      <path d="M4 5h13a2 2 0 0 1 2 2v11a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z" />
+      <path d="M19 9h1a1 1 0 0 1 1 1v8" />
+      <path d="M7 9h6" />
+      <path d="M7 13h6" />
+      <path d="M7 17h3" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3.5 20c0-3.3 2.5-5.4 5.5-5.4s5.5 2.1 5.5 5.4" />
+      <path d="M16 5.6a3 3 0 0 1 0 5.8" />
+      <path d="M17.5 14.9c2.1.4 3.6 2.2 3.6 5.1" />
+    </>
+  ),
 }
 
 export default function Icon({ name, size = 20, className, strokeWidth = 1.5 }) {

@@ -49,6 +49,18 @@ export function signaturesOf(memberId) {
     .map(([name]) => name)
 }
 
+/**
+ * 检索用别名：查询词命中成员中文姓名时，返回该成员在论文中的全部英文署名
+ * 用于「用中文名搜到英文署名论文」（如「李颖」→ Ying Li）
+ */
+export function signaturesForQuery(keyword) {
+  const kw = String(keyword || '').trim().toLowerCase()
+  if (!kw) return []
+  return members
+    .filter((m) => m.name.toLowerCase().includes(kw))
+    .flatMap((m) => signaturesOf(m.id))
+}
+
 /** 成员主页路径：导师走 /faculty/:id，学生走 /team/:id */
 export function memberPath(member) {
   return member.role === 'faculty' ? `/faculty/${member.id}` : `/team/${member.id}`

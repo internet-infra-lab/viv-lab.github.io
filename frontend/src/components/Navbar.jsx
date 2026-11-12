@@ -28,13 +28,26 @@ export default function Navbar() {
     setMenuOpen(false)
   }, [location])
 
+  // 顶部搜索框走全站搜索（论文 / 新闻 / 成员 / 研究方向）
   const submitSearch = (e) => {
     e.preventDefault()
     const q = keyword.trim()
-    navigate(q ? `/publications?q=${encodeURIComponent(q)}` : '/publications')
+    navigate(q ? `/search?q=${encodeURIComponent(q)}` : '/search')
     setSearchOpen(false)
     setKeyword('')
   }
+
+  // Ctrl/Cmd + K 唤起搜索
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && String(e.key).toLowerCase() === 'k') {
+        e.preventDefault()
+        setSearchOpen(true)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
 
   const linkClass = ({ isActive }) =>
     isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
@@ -80,11 +93,12 @@ export default function Navbar() {
                 <input
                   className={styles.searchInput}
                   type="search"
-                  placeholder="搜索论文标题 / 关键词…"
+                  placeholder="搜索论文 / 作者 / 新闻 / 成员…"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
                   autoFocus
-                  aria-label="站内搜索"
+                  aria-label="全站搜索"
+                  title="按 Ctrl / Cmd + K 可快速唤起搜索"
                 />
                 <button type="submit" className={styles.searchSubmit} aria-label="提交搜索">
                   <Icon name="search" size={18} />
