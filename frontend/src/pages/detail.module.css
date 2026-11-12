@@ -340,6 +340,13 @@
   display: block;
 }
 
+/* 横幅类封面（coverFit: "contain"）：按原始比例完整展示，避免左右被裁切 */
+.newsCoverContain {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 .newsDate {
   font-size: var(--font-body-sm);
   color: var(--color-text-muted);

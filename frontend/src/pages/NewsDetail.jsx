@@ -7,6 +7,28 @@ import news from '../data/news.json'
 import NotFound from './NotFound'
 import styles from './detail.module.css'
 
+/**
+ * 正文中的裸链接自动转成可点击超链接
+ * - 仅识别 http(s)；遇到中英文标点即截断，避免把中文句号吞进 href
+ * - 样式复用全局 .prose a（主色 + 下划线），不额外定义
+ */
+const URL_PATTERN = /(https?:\/\/[^\s<>"'，。、；：！？（）【】《》“”‘’]+)/g
+
+function linkify(text) {
+  if (typeof text !== 'string' || !text) return text
+  const parts = text.split(URL_PATTERN)
+  if (parts.length === 1) return text
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer">
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  )
+}
+
 /** 富文本块渲染：支持 段落 / 标题 / 列表 / 图片 / 引用 */
 function renderBlock(block, idx) {
   switch (block.type) {
@@ -26,7 +48,7 @@ function renderBlock(block, idx) {
       return (
         <ul key={idx} className={styles.blockList}>
           {block.items.map((li, i) => (
-            <li key={i}>{li}</li>
+            <li key={i}>{linkify(li)}</li>
           ))}
         </ul>
       )
@@ -34,7 +56,7 @@ function renderBlock(block, idx) {
       return (
         <ol key={idx} className={styles.blockList}>
           {block.items.map((li, i) => (
-            <li key={i}>{li}</li>
+            <li key={i}>{linkify(li)}</li>
           ))}
         </ol>
       )
@@ -48,14 +70,14 @@ function renderBlock(block, idx) {
     case 'quote':
       return (
         <blockquote key={idx} className={styles.blockQuote}>
-          {block.text}
+          {linkify(block.text)}
         </blockquote>
       )
     case 'p':
     default:
       return (
         <p key={idx} className={styles.blockParagraph}>
-          {block.text}
+          {linkify(block.text)}
         </p>
       )
   }
@@ -104,7 +126,13 @@ export default function NewsDetail() {
           <h1 className={styles.newsTitle}>{item.title}</h1>
           {item.cover && (
             <div className={styles.newsCover}>
-              <img src={assetUrl(item.cover)} alt={item.title} className={styles.newsCoverImg} />
+              <img
+                src={assetUrl(item.cover)}
+                alt={item.title}
+                className={`${styles.newsCoverImg}${
+                  item.coverFit === 'contain' ? ` ${styles.newsCoverContain}` : ''
+                }`}
+              />
             </div>
           )}
         </header>

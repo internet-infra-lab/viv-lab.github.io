@@ -33,7 +33,9 @@ export default function NewsCard({ item, compact = false }) {
               src={assetUrl(item.cover)}
               alt={item.title}
               loading="lazy"
-              className={styles.coverImg}
+              className={`${styles.coverImg}${
+                item.coverFit === 'contain' ? ` ${styles.coverContain}` : ''
+              }`}
               onError={() => setImgFailed(true)}
             />
           ) : (

@@ -76,7 +76,9 @@ export default function News() {
                     <img
                       src={assetUrl(featured.cover)}
                       alt=""
-                      className={styles.featuredCoverImg}
+                      className={`${styles.featuredCoverImg}${
+                        featured.coverFit === 'contain' ? ` ${styles.featuredCoverContain}` : ''
+                      }`}
                       loading="lazy"
                     />
                   ) : (

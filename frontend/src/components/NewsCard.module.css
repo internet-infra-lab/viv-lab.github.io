@@ -27,6 +27,11 @@
   display: block;
 }
 
+/* 横幅类封面：完整展示，不裁边 */
+.coverContain {
+  object-fit: contain;
+}
+
 .card:hover .cover {
   transform: scale(1.02);
 }

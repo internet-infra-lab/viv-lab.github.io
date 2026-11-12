@@ -5,6 +5,7 @@
     "date": "2026-11-12",
     "category": "合作交流",
     "cover": "/images/news/news-w3c-dia-open-discussion.jpg",
+    "coverFit": "contain",
     "summary": "2026 年 10 月，W3C 数据互操作架构（DIA）社区组在官方主页发布技术进展文档，并于 10 月 30 日通过公开邮件列表发起「数据互操作架构需要哪些共同能力」的技术讨论；近期又在 GitHub 开放《跨域数据互操作：需求与开放问题》讨论稿和跨域访问控制专题讨论，诚邀相关领域研究人员与开发者参与。",
     "content": [
       {

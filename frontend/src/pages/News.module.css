@@ -81,6 +81,11 @@
   display: block;
 }
 
+/* 横幅类封面：完整展示，不裁边 */
+.featuredCoverContain {
+  object-fit: contain;
+}
+
 .featuredBody {
   padding: var(--space-24);
   display: flex;
