@@ -255,6 +255,18 @@
   animation: riseIn 0.5s ease-out both;
 }
 
+/* 学生卡片整体为可点击链接：占满单元格并继承文本样式 */
+.studentLink {
+  display: block;
+  color: inherit;
+  border-radius: var(--radius-lg);
+}
+
+.studentLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* 悬停/聚焦时提升整个单元（含浮窗）的层级。
    单元因入场动画的 transform 各自形成层叠上下文，兄弟单元按 DOM 顺序绘制，
    若只给面板加 z-index，面板仍会被相邻单元的层叠上下文覆盖；

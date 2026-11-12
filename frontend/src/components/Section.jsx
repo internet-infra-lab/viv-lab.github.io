@@ -12,11 +12,12 @@ export default function Section({
   actionLabel,
   actionTo,
   index,
+  id,
   children,
   className = '',
 }) {
   return (
-    <section className={`${styles.section} ${className}`}>
+    <section id={id} className={`${styles.section} ${className}`}>
       <div className={styles.header}>
         <div className={styles.titles}>
           {index && <span className={styles.index}>{index}</span>}

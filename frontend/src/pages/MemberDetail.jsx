@@ -63,10 +63,12 @@ export default function MemberDetail() {
         </div>
       </div>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>个人简介</h2>
-        <p className={`${styles.paragraph} prose`}>{member.bio}</p>
-      </section>
+      {member.bio && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>个人简介</h2>
+          <p className={`${styles.paragraph} prose`}>{member.bio}</p>
+        </section>
+      )}
 
       {member.education && member.education.length > 0 && (
         <section className={styles.section}>

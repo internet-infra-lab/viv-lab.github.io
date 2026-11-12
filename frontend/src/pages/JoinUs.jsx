@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import Section from '../components/Section'
@@ -13,6 +14,19 @@ import styles from './JoinUs.module.css'
  */
 
 const EMAIL_SUBJECT = '申请加入实验室-姓名-学校-年级-感兴趣方向'
+
+/** 申请邮件正文模板（点击「发送申请邮件」时预填，降低用户填写成本） */
+const EMAIL_BODY = [
+  '姓名：',
+  '学校／院系：',
+  '年级（如 2027 级）：',
+  '感兴趣的研究方向：',
+  '',
+  '（请随信附上个人简历、成绩单，以及其他可证明科研能力的材料）',
+].join('\n')
+
+/** 申请收件邮箱（硕博研究生申请专用，取自 site.json contact.applyEmail） */
+const APPLY_EMAIL = site.contact.applyEmail
 
 /* ---- 招募对象 ---- */
 const RECRUIT_GROUPS = [
@@ -94,6 +108,24 @@ const CONTACTS = [
 const isPending = (v) => !v || v.includes('待确认')
 
 export default function JoinUs() {
+  const [copied, setCopied] = useState(false)
+
+  /** 复制申请邮箱：浏览器未配置邮件客户端时，mailto 不会有反应，提供复制兜底 */
+  const copyApplyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(APPLY_EMAIL)
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = APPLY_EMAIL
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
     <>
       <PageHeader
@@ -175,7 +207,7 @@ export default function JoinUs() {
         </section>
 
         {/* ---- 联系方式 ---- */}
-        <Section title="联系方式" en="Contact Us">
+        <Section id="contact" title="联系方式" en="Contact Us" className={styles.contactAnchor}>
           <div className={styles.contactGrid}>
             {CONTACTS.map((c) =>
               isPending(c.email) ? (
@@ -213,11 +245,17 @@ export default function JoinUs() {
           <div className={styles.ctaRow}>
             <a
               className={styles.ctaBtn}
-              href={`mailto:${site.contact.email}?subject=${encodeURIComponent(EMAIL_SUBJECT)}`}
+              href={`mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(
+                EMAIL_SUBJECT,
+              )}&body=${encodeURIComponent(EMAIL_BODY)}`}
             >
               发送申请邮件
               <Icon name="external" size={16} />
             </a>
+            <button type="button" className={styles.ghostBtn} onClick={copyApplyEmail}>
+              {copied ? '邮箱已复制' : `复制邮箱 ${APPLY_EMAIL}`}
+              <Icon name={copied ? 'check' : 'copy'} size={16} />
+            </button>
             <Link to="/about" className={styles.ghostBtn}>
               先了解实验室
             </Link>

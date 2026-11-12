@@ -342,9 +342,12 @@ a.contactCard:hover {
 .ghostBtn {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   padding: 13px 28px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-primary);
+  /* 同一套样式同时用于 <a> 与 <button>：显式透明底色，抵消 button 的默认背景 */
+  background: transparent;
   color: var(--color-primary);
   font-size: 15px;
   font-weight: 500;
@@ -378,4 +381,9 @@ a.contactCard:hover {
     justify-content: center;
     width: 100%;
   }
+}
+
+/* 联系方式板块被跨页锚点定位时，留出吸顶导航的高度，避免标题被遮挡 */
+.contactAnchor {
+  scroll-margin-top: 96px;
 }

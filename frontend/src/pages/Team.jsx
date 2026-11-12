@@ -228,19 +228,25 @@ export default function Team() {
             <div className={styles.studentGrid}>
               {current.map((s) => (
                 <div key={s.id} className={styles.studentCell}>
-                  <article className={styles.studentCard} tabIndex={0}>
-                    <Portrait name={s.name} src={s.photo} className={styles.studentPortrait} />
-                    <h3 className={styles.studentName}>{s.name}</h3>
-                    <p className={styles.studentMeta}>
-                      <span className={styles.studentDegree}>
-                        {DEGREE_LABEL[s.role] || s.title || '研究生'}
-                      </span>
-                      <span className={styles.metaDot} />
-                      <span className={styles.studentGrade}>
-                        {parseGrade(s.grade) || s.grade || ''}
-                      </span>
-                    </p>
-                  </article>
+                  <Link
+                    to={`/team/${s.id}`}
+                    className={styles.studentLink}
+                    aria-label={`${s.name} 个人主页`}
+                  >
+                    <article className={styles.studentCard}>
+                      <Portrait name={s.name} src={s.photo} className={styles.studentPortrait} />
+                      <h3 className={styles.studentName}>{s.name}</h3>
+                      <p className={styles.studentMeta}>
+                        <span className={styles.studentDegree}>
+                          {DEGREE_LABEL[s.role] || s.title || '研究生'}
+                        </span>
+                        <span className={styles.metaDot} />
+                        <span className={styles.studentGrade}>
+                          {parseGrade(s.grade) || s.grade || ''}
+                        </span>
+                      </p>
+                    </article>
+                  </Link>
 
                   {/* 悬停浮出的轻量成员档案 */}
                   <StudentPreview student={s} />
@@ -264,18 +270,24 @@ export default function Team() {
             <div className={styles.alumniGrid}>
               {alumni.map((m) => (
                 <div key={m.id} className={styles.studentCell}>
-                  <article className={styles.alumniCard} tabIndex={0}>
-                    <Portrait name={m.name} src={m.photo} className={styles.alumniAvatar} />
-                    <div className={styles.alumniInfo}>
-                      <h3 className={styles.alumniName}>{m.name}</h3>
-                      <p className={styles.alumniMeta}>
-                        <span>{DEGREE_LABEL[m.role] || m.title || '研究生'}</span>
-                        <span className={styles.alumniYear}>
-                          {m.graduationYear ? `${m.graduationYear} 年毕业` : '已毕业'}
-                        </span>
-                      </p>
-                    </div>
-                  </article>
+                  <Link
+                    to={`/team/${m.id}`}
+                    className={styles.studentLink}
+                    aria-label={`${m.name} 个人主页`}
+                  >
+                    <article className={styles.alumniCard}>
+                      <Portrait name={m.name} src={m.photo} className={styles.alumniAvatar} />
+                      <div className={styles.alumniInfo}>
+                        <h3 className={styles.alumniName}>{m.name}</h3>
+                        <p className={styles.alumniMeta}>
+                          <span>{DEGREE_LABEL[m.role] || m.title || '研究生'}</span>
+                          <span className={styles.alumniYear}>
+                            {m.graduationYear ? `${m.graduationYear} 年毕业` : '已毕业'}
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </Link>
 
                   {/* 悬停浮出的轻量成员档案（与在读研究生一致） */}
                   <StudentPreview student={m} />

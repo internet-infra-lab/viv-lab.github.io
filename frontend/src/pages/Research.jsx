@@ -4,7 +4,6 @@ import Section from '../components/Section'
 import Card from '../components/Card'
 import Icon from '../components/Icon'
 import Tag from '../components/Tag'
-import site from '../data/site.json'
 import { RESEARCH_DIRECTIONS } from '../config/researchDirections'
 import { PROJECTS } from '../config/projects'
 import { LAB_STATS } from '../utils/stats'
@@ -103,10 +102,10 @@ export default function Research() {
                 <p className={styles.projectsPendingDesc}>
                   实验室承担的国家级、省部级及横向科研项目信息正在整理归档，将陆续在此呈现项目背景、目标与进展。如有合作意向，欢迎邮件联系实验室。
                 </p>
-                <a className={styles.projectsPendingCta} href={`mailto:${site.contact.email}`}>
+                <Link to="/join-us#contact" className={styles.projectsPendingCta}>
                   <Icon name="mail" size={15} />
                   联系合作
-                </a>
+                </Link>
               </div>
             </div>
           )}
