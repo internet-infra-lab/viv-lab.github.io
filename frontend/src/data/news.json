@@ -1,5 +1,90 @@
 [
   {
+    "id": "news-w3c-dia-open-discussion",
+    "title": "W3C DIA 社区组开放技术讨论：共同探索跨域数据互操作",
+    "date": "2026-11-12",
+    "category": "合作交流",
+    "cover": "/images/news/news-w3c-dia-open-discussion.jpg",
+    "summary": "2026 年 10 月，W3C 数据互操作架构（DIA）社区组在官方主页发布技术进展文档，并于 10 月 30 日通过公开邮件列表发起「数据互操作架构需要哪些共同能力」的技术讨论；近期又在 GitHub 开放《跨域数据互操作：需求与开放问题》讨论稿和跨域访问控制专题讨论，诚邀相关领域研究人员与开发者参与。",
+    "content": [
+      {
+        "type": "p",
+        "text": "Data Interoperating Architecture（DIA）Community Group 是在万维网联盟（W3C）社区组机制下设立的开放技术社区，致力于探索跨异构系统、跨管理域的数据互操作架构与相关技术，包括数据资源的独立标识与发现、跨域身份与授权、受控数据访问，以及数据使用过程中的安全与合规等问题。社区希望在充分利用现有 Web 和互联网技术的基础上，研究不同系统实现数据互联互通所需要的共通能力，并通过公开讨论、技术文档和开放协作逐步推进相关工作。目前，DIA 社区组已建立官方主页、公开邮件列表及 GitHub 仓库，为技术交流与协作提供了基础渠道。"
+      },
+      {
+        "type": "h2",
+        "text": "近期技术进展与开放讨论"
+      },
+      {
+        "type": "p",
+        "text": "2026 年 10 月，DIA 社区组在官方主页发布了《DIA Community Group: Technical Progress and Upcoming Activities》，介绍了数据标识、资源发现、跨域授权和协议兼容性等方面的研究进展，并提出进一步开展开放技术讨论的计划。10 月 30 日，社区通过公开邮件列表发起了题为 Essential Capabilities of a Data Interoperability Architecture 的技术讨论，围绕一个基础问题征集意见：在相互独立管理的系统之间实现数据互操作，究竟需要哪些共同能力？讨论主要涉及三个方面："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "资源标识与发现：如何使不同系统能够识别、描述并发现彼此管理的数据资源？",
+          "跨域访问与控制：如何在不统一各机构内部身份体系和授权模型的前提下，实现必要的访问交互？",
+          "架构能力边界：哪些能力需要在互操作层面形成共同约定，哪些可以继续由现有 Web 标准或具体应用承担？"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "在此前讨论的基础上，社区近期进一步通过 GitHub 开放了两项协作内容。"
+      },
+      {
+        "type": "h2",
+        "text": "跨域数据互操作需求讨论稿"
+      },
+      {
+        "type": "p",
+        "text": "《Cross-Domain Data Interoperability: Requirements and Open Questions》讨论稿从传统跨机构数据访问和自动化、智能体辅助数据使用两个场景出发，整理了候选互操作需求，并提出若干尚待研究的问题。该文档目前作为初步技术讨论材料公开征求意见，并非已达成共识的技术规范。"
+      },
+      {
+        "type": "p",
+        "text": "查看讨论稿及参与评议：https://github.com/w3c-cg/dia/pull/1"
+      },
+      {
+        "type": "h2",
+        "text": "跨域访问控制专题讨论"
+      },
+      {
+        "type": "p",
+        "text": "《What Needs to Be Interoperable in Cross-Domain Access Control?》专题讨论聚焦不同管理域之间的授权交互问题：数据提供方与使用方是否必须采用相同的身份和授权机制？哪些请求信息和授权结果需要具备共同的表达方式？现有 OAuth 2.0、OpenID Connect 等技术能够解决其中哪些问题？讨论旨在进一步明确已有技术的适用范围，以及可能仍然存在的互操作需求。"
+      },
+      {
+        "type": "p",
+        "text": "查看专题讨论及发表意见：https://github.com/w3c-cg/dia/issues/2"
+      },
+      {
+        "type": "h2",
+        "text": "面向开放社区，持续推进技术探索"
+      },
+      {
+        "type": "p",
+        "text": "数据互操作涉及数据管理、互联网协议、身份与访问控制、数据空间及智能化应用等多个技术领域，不同领域对互操作的理解和需求也可能存在差异。DIA 社区组希望通过开放交流，汇集来自科研机构、产业界、开源社区及标准化领域的不同观点，共同探讨跨系统协同所需的关键能力，以及互操作架构与现有 Web 标准、互联网协议和成熟技术的衔接方式。后续，社区将结合讨论反馈，持续完善需求分析、典型应用场景及相关技术材料，探索进一步开展互操作架构与协议研究的可能性。"
+      },
+      {
+        "type": "h2",
+        "text": "欢迎参与 DIA 社区讨论"
+      },
+      {
+        "type": "p",
+        "text": "如果你关注数据互操作、数据基础设施、跨域身份与授权、可信数据共享，或 AI Agent 环境下的数据使用问题，欢迎了解 DIA 社区组，并参与开放技术交流。无论是对已有技术的补充、实际系统中的互操作案例，还是对候选需求的不同意见，都欢迎在 GitHub 或邮件列表中交流。让数据互操作从研究问题走向开放协作，也期待更多同行参与讨论。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "W3C DIA 社区组官方主页：https://www.w3.org/community/dia/",
+          "DIA GitHub 开放仓库：https://github.com/w3c-cg/dia",
+          "加入 W3C DIA Community Group：https://www.w3.org/community/dia/"
+        ]
+      }
+    ],
+    "source": "互联网基础技术实验室",
+    "sourceUrl": "https://mp.weixin.qq.com/s/ZTfLSrKyMb0vDFLe7mYkGw",
+    "archived": false
+  },
+  {
     "id": "news-pdet-lsh-tkde-2026",
     "title": "互联网基础技术实验室论文发表于 IEEE TKDE",
     "date": "2026-06-01",
